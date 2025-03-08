@@ -15,7 +15,7 @@ import MB from "../assets/ICONS/MB.png";
 const competitions = [
   {
     id: 1,
-    name: 'Gaming Competition',
+    name: 'E-Gaming Competition',
     icon: GC, 
     color: 'bg-red-500',
   },

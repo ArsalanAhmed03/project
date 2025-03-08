@@ -27,7 +27,7 @@ function AutoshowSection() {
           <div className="w-full md:w-1/2 space-y-8" data-aos="fade-right">
             <div className="space-y-4">
               <h2 className="text-6xl font-bold bg-gradient-to-r from-[rgb(255,0,102)] to-[rgb(255,100,150)] text-transparent bg-clip-text animate-gradient">
-                AutoShow
+                EV AutoShow
               </h2>
               <div className="h-1 w-24 bg-gradient-to-r from-[rgb(255,0,102)] to-[rgb(0,102,255)]"></div>
             </div>
