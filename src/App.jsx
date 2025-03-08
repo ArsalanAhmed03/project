@@ -12,8 +12,8 @@ function App() {
       <Navbar />
       <Hero />
       <Competitions />
-      <Gallery />
       <AutoshowSection />
+      <Gallery />
       <Register />
       <Contact />
     </div>
