@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-const posts = [
+const originalPosts = [
   {
     id: 1,
     title: "National Chess Championship 2024",
@@ -19,7 +19,7 @@ const posts = [
   {
     id: 3,
     title: "Marathon 2024",
-    image: "https://images.unsplash.com/photo-1452626038306-9aae5e071dd3?auto=format&fit=crop&q=80&w=800",
+    image: "https://images.unsplash.com/photo-1452626038306-9aae5e071dd3?auto=format&itfit=crop&q=80&w=800",
     category: "Registration",
     description: "Early bird: $30 | Regular: $45 | Premium Package: $75"
   },
@@ -32,35 +32,71 @@ const posts = [
   }
 ];
 
+// Create a wrapped array with duplicated items for smooth infinite scroll
+const posts = [
+  ...originalPosts.map(post => ({ ...post, id: `prev-${post.id}` })),
+  ...originalPosts,
+  ...originalPosts.map(post => ({ ...post, id: `next-${post.id}` }))
+];
+
 function Gallery() {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(originalPosts.length); // Start from the middle set
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const handleTransitionEnd = () => {
+    setIsTransitioning(false);
+    
+    // Reset to middle set if we've scrolled to the cloned sets
+    if (currentIndex >= originalPosts.length * 2) {
+      setCurrentIndex(originalPosts.length);
+    } else if (currentIndex < originalPosts.length) {
+      setCurrentIndex(originalPosts.length * 2 - 1);
+    }
+  };
 
   const next = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex + 1 >= posts.length ? 0 : prevIndex + 1
-    );
+    if (!isTransitioning) {
+      setIsTransitioning(true);
+      setCurrentIndex(prev => prev + 1);
+    }
   };
 
   const prev = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex - 1 < 0 ? posts.length - 1 : prevIndex - 1
-    );
+    if (!isTransitioning) {
+      setIsTransitioning(true);
+      setCurrentIndex(prev => prev - 1);
+    }
   };
 
-  const getVisiblePosts = () => {
-    const visiblePosts = [];
-    // Show different number of posts based on screen size (handled by Tailwind)
-    for (let i = 0; i < posts.length; i++) {
-      const index = (currentIndex + i) % posts.length;
-      visiblePosts.push(posts[index]);
+  const getTransformValue = () => {
+    let postWidth;
+    let gapWidth = 1; // percentage gap between posts
+
+    if (windowWidth < 768) {
+      postWidth = 100; // Full width on mobile
+    } else if (windowWidth < 1024) {
+      postWidth = 50; // Half width on tablet
+    } else {
+      postWidth = 33.33; // One-third width on desktop
     }
-    return visiblePosts;
+
+    return `translateX(-${currentIndex * (postWidth + gapWidth)}%)`;
   };
 
   return (
-    <div className="w-full max-w-7xl mx-auto px-4 py-16 min-h-[600px]">
+    <div className="w-full max-w-7xl mx-auto px-4 py-4">
       {/* Gallery Heading */}
-      <h2 className="text-4xl font-bold text-center mb-8">Gallery</h2>
+      <h2 className="text-4xl font-bold text-center mb-4">Gallery</h2>
       
       <div className="relative">
         <div className="flex items-center">
@@ -73,11 +109,18 @@ function Gallery() {
           </button>
 
           <div className="w-full overflow-hidden">
-            <div className="flex gap-4 transition-transform duration-300">
-              {getVisiblePosts().map((post) => (
+            <div 
+              className="flex gap-4 transition-transform duration-500 ease-in-out"
+              style={{ 
+                transform: getTransformValue(),
+                ...(isTransitioning ? {} : { transition: 'none' })
+              }}
+              onTransitionEnd={handleTransitionEnd}
+            >
+              {posts.map((post) => (
                 <div
                   key={post.id}
-                  className="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 transition-all duration-300"
+                  className="w-full md:w-1/2 lg:w-1/3 flex-shrink-0"
                 >
                   <div className="bg-white rounded-xl shadow-lg overflow-hidden">
                     <div className="relative h-48">

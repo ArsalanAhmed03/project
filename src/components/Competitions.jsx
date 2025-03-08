@@ -94,11 +94,11 @@ const Competitions = () => {
               data-aos="fade-up"
               className="flex flex-col items-center p-4 rounded-lg hover:transform hover:scale-105 transition-transform duration-200"
             >
-              <div className={`${competition.color} p-4 rounded-full mb-4`}>
+              <div className={`${competition.color} w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 flex items-center justify-center rounded-full mb-4`}>
                 <img
                   src={competition.icon}
                   alt={competition.name}
-                  className="w-36 h-36"
+                  className="w-3/4 h-3/4 object-contain"
                 />
               </div>
               <h3 className="text-center text-sm font-medium">{competition.name}</h3>
