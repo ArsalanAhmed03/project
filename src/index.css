@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.gradient-bg {
+  background: linear-gradient(135deg, #ff0066 0%, #0066ff 100%);
+}
+
+.wave-shape {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background-image: url('/wave.svg');
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: cover;
+}
