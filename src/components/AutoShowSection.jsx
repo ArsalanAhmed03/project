@@ -1,4 +1,8 @@
 import React from 'react';
+import C1 from "../assets/Cars/C1.jpg";
+import C2 from "../assets/Cars/C2.jpg";
+import C3 from "../assets/Cars/C3.jpg";
+
 
 function AutoshowSection() {
   return (
@@ -15,7 +19,7 @@ function AutoshowSection() {
           <div className="w-full md:w-1/2 space-y-8">
             <div className="space-y-4">
               <h2 className="text-6xl font-bold bg-gradient-to-r from-[rgb(255,0,102)] to-[rgb(255,100,150)] text-transparent bg-clip-text animate-gradient">
-                EV AutoShow
+                AutoShow
               </h2>
               <div className="h-1 w-24 bg-gradient-to-r from-[rgb(255,0,102)] to-[rgb(0,102,255)]"></div>
             </div>
@@ -27,13 +31,29 @@ function AutoshowSection() {
               </span>
             </p>
           </div>
-          <div className="w-full md:w-1/2 transform hover:scale-105 transition-all duration-500">
-            <div className="relative">
-              <div className="absolute -inset-4 bg-gradient-to-r from-[rgb(255,0,102)] to-[rgb(0,102,255)] rounded-lg blur opacity-25 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+          <div className="w-full md:w-1/2 grid grid-cols-2 gap-4">
+            <div className="relative col-span-2">
+              <div className="absolute -inset-2 bg-gradient-to-r from-[rgb(255,0,102)] to-[rgb(0,102,255)] rounded-lg blur opacity-25 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
               <img 
-                src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                alt="Luxury car at autoshow"
-                className="relative rounded-lg shadow-2xl w-full h-auto object-cover transform hover:scale-[1.02] transition-transform duration-300"
+                src={C1}
+                alt="Luxury sports car"
+                className="relative rounded-lg shadow-2xl w-full h-64 object-cover transform hover:scale-[1.02] transition-transform duration-300"
+              />
+            </div>
+            <div className="relative">
+              <div className="absolute -inset-2 bg-gradient-to-r from-[rgb(255,0,102)] to-[rgb(0,102,255)] rounded-lg blur opacity-25 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+              <img 
+                src={C2}
+                alt="Classic car showcase"
+                className="relative rounded-lg shadow-2xl w-full h-48 object-cover transform hover:scale-[1.02] transition-transform duration-300"
+              />
+            </div>
+            <div className="relative">
+              <div className="absolute -inset-2 bg-gradient-to-r from-[rgb(255,0,102)] to-[rgb(0,102,255)] rounded-lg blur opacity-25 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+              <img 
+                src={C3}
+                alt="Concept car display"
+                className="relative rounded-lg shadow-2xl w-full h-48 object-cover transform hover:scale-[1.02] transition-transform duration-300"
               />
             </div>
           </div>
