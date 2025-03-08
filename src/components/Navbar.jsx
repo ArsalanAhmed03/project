@@ -18,7 +18,8 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="fixed w-full bg-white shadow-md z-50">
+    // <nav className="fixed w-full bg-white/30 backdrop-blur-md shadow-md z-50">
+    <nav className="fixed w-full bg-white/30 backdrop-blur-md z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex-shrink-0 flex items-center">
@@ -39,14 +40,11 @@ const Navbar = () => {
             
             ))}
             <button className="border-2 border-primary text-primary bg-transparent px-4 py-2 rounded-full font-bold hover:bg-primary hover:text-white transition-colors duration-200">
-  REGISTER
-</button>
-<button className="border-2 border-secondary text-secondary bg-transparent px-4 py-2 rounded-full font-bold hover:bg-secondary hover:text-white transition-colors duration-200">
-  JOIN OUR TEAM
-</button>
-
-
-
+              REGISTER
+            </button>
+            <button className="border-2 border-secondary text-secondary bg-transparent px-4 py-2 rounded-full font-bold hover:bg-secondary hover:text-white transition-colors duration-200">
+              JOIN OUR TEAM
+              </button>
           </div>
 
           <div className="md:hidden flex items-center">

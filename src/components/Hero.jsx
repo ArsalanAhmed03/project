@@ -1,12 +1,22 @@
+import { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import Spiral from "../assets/spiral.png";
 
 const Hero = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, 
+      once: true,     
+    });
+  }, []);
+
   return (
     <div className="relative min-h-screen flex items-center">
       <div className="wave-shape"></div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center">
         {/* Text Section */}
-        <div className="relative z-10 md:w-1/2 text-left">
+        <div data-aos="fade-right" className="relative z-10 md:w-1/2 text-left">
           <h1 className="text-4xl md:text-6xl font-bold text-navy-900 mb-6">
             WELCOME TO<br />
             <span className="gradient-text">IEEE WEEK 2025</span>
@@ -22,7 +32,7 @@ const Hero = () => {
           </button>
         </div>
         {/* Image Section */}
-        <div className="md:w-1/2 mt-8 md:mt-0 flex justify-center">
+        <div data-aos="fade-left" className="md:w-1/2 mt-8 md:mt-0 flex justify-center">
           <img
             src={Spiral}
             alt="Spiral Graphic"

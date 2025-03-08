@@ -1,8 +1,22 @@
+import { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 const Register = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, 
+      once: true,     
+    });
+  }, []);
+
   return (
     <section id="register" className="py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12">
+        <div 
+          data-aos="fade-right" 
+          className="bg-white rounded-2xl shadow-xl p-8 md:p-12"
+        >
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Register Now</h2>
           <p className="text-gray-600 mb-8">
             Ready to put your skills to the test? Register now for IEEE Week
@@ -11,12 +25,15 @@ const Register = () => {
             everyone. Don't miss your chance to showcase your talent—sign up
             today!
           </p>
-          <button className="bg-primary text-white px-8 py-3 rounded-md text-lg hover:bg-opacity-90">
-            Register Now
+          <button className="border-2 border-primary text-primary bg-transparent px-4 py-2 rounded-full font-bold hover:bg-primary hover:text-white transition-colors duration-200">
+            REGISTER NOW
           </button>
         </div>
 
-        <div className="mt-16 bg-white rounded-2xl shadow-xl p-8 md:p-12">
+        <div 
+          data-aos="fade-left" 
+          className="mt-16 bg-white rounded-2xl shadow-xl p-8 md:p-12"
+        >
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Join Our Team</h2>
           <p className="text-gray-600 mb-8">
             Be part of something big! Join the IEEE Week team and help bring this
@@ -24,8 +41,8 @@ const Register = () => {
             marketing, or tech, there's a place for you. Gain experience, make
             connections, and be at the heart of the action—sign up now!
           </p>
-          <button className="bg-secondary text-white px-8 py-3 rounded-md text-lg hover:bg-opacity-90">
-            Join Now
+          <button className="border-2 border-secondary text-secondary bg-transparent px-4 py-2 rounded-full font-bold hover:bg-secondary hover:text-white transition-colors duration-200">
+            JOIN NOW
           </button>
         </div>
       </div>
