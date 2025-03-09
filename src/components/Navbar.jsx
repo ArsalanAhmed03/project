@@ -3,8 +3,6 @@ import { Link } from 'react-scroll';
 import LOGO from "../assets/Logo.png";
 import MAINLOGO from "../assets/MainLogo.png";
 
-
-
 const IEEELogo = () => (
   <img src={LOGO} alt="IEEE Logo" width="120" height="40" />
 );
@@ -24,36 +22,31 @@ const Navbar = () => {
   ];
 
   return (
-    // <nav className="fixed w-full bg-white/30 backdrop-blur-md shadow-md z-50">
-    <nav className="fixed w-full bg-white/30 backdrop-blur-md z-50">
+    <nav className="fixed w-full bg-white/30 backdrop-blur-md shadow-md z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
-        <div className="flex-shrink-0 flex items-center space-x-2">
+          <div className="flex-shrink-0 flex items-center space-x-2">
             <IEEEMainLogo />
             <IEEELogo />
           </div>
-
-          {/* <div className="flex-shrink-0 flex items-center">
-          </div> */}
           <div className="hidden md:flex items-center space-x-4">
             {navItems.map((item) => (
               <Link
-              key={item.name}
-              to={item.to}
-              smooth={true}
-              duration={500}
-              className="text-gray-700 hover:text-primary px-3 py-2 rounded-md cursor-pointer font-bold"
-            >
-              {item.name}
-            </Link>
-            
+                key={item.name}
+                to={item.to}
+                smooth={true}
+                duration={500}
+                className="text-gray-700 hover:text-primary px-3 py-2 rounded-md cursor-pointer font-bold"
+              >
+                {item.name}
+              </Link>
             ))}
             <button className="border-2 border-primary text-primary bg-transparent px-4 py-2 rounded-full font-bold hover:bg-primary hover:text-white transition-colors duration-200">
               REGISTER
             </button>
             <button className="border-2 border-secondary text-secondary bg-transparent px-4 py-2 rounded-full font-bold hover:bg-secondary hover:text-white transition-colors duration-200">
               JOIN OUR TEAM
-              </button>
+            </button>
           </div>
 
           <div className="md:hidden flex items-center">
@@ -75,7 +68,7 @@ const Navbar = () => {
 
       {/* Mobile menu */}
       {isOpen && (
-        <div className="md:hidden">
+        <div className="md:hidden absolute top-16 left-0 w-full bg-white/30 backdrop-blur-md shadow-md">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             {navItems.map((item) => (
               <Link
