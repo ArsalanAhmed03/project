@@ -21,7 +21,7 @@ function AboutUs() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
+      {/* Content Section */}
       <div className="px-4 py-16">
         <div className="max-w-4xl mx-auto">
           {/* About IEEE Week */}
@@ -57,7 +57,7 @@ function AboutUs() {
           </div>
         </div>
 
-        {/* Gallery Section - Full Width */}
+        {/* Gallery Section */}
         <div className="mb-12" data-aos="fade-up">
           <div className="max-w-4xl mx-auto mb-6 text-center">
             <div className="flex items-center justify-center gap-2">
@@ -65,9 +65,10 @@ function AboutUs() {
               <h2 className="text-3xl font-bold text-gray-900">Gallery</h2>
             </div>
           </div>
-          <div className="grid grid-cols-4 gap-2 auto-rows-[250px] max-w-[1920px] mx-auto px-2">
-            {/* Large feature image */}
-            <div className="col-span-2 row-span-2 overflow-hidden rounded-lg">
+          {/* Responsive grid: 2 columns on mobile, 4 on desktop */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-2 auto-rows-[150px] md:auto-rows-[250px] max-w-[1920px] mx-auto px-2">
+            {/* Large feature image: spans full width on mobile, 2 columns and 2 rows on desktop */}
+            <div className="col-span-2 row-span-1 md:row-span-2 overflow-hidden rounded-lg">
               <img 
                 src={G2}
                 alt="Students collaborating"
@@ -84,15 +85,17 @@ function AboutUs() {
               />
             </div>
             
-            {/* Vertical rectangle */}
-            <div className="row-span-2 overflow-hidden rounded-lg">
+            {/* Vertical rectangle: one row on mobile, two on desktop */}
+            <div className="overflow-hidden rounded-lg row-span-1 md:row-span-2">
               <img 
                 src={G3}
                 alt="Workshop session"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
               />
             </div>
-            <div className="row-span-2 overflow-hidden rounded-lg">
+            
+            {/* Another vertical rectangle */}
+            <div className="overflow-hidden rounded-lg row-span-1 md:row-span-2">
               <img 
                 src={G7}
                 alt="Workshop session"
@@ -100,7 +103,7 @@ function AboutUs() {
               />
             </div>
             
-            {/* Horizontal rectangle */}
+            {/* Horizontal rectangle: spans 2 columns on all screens */}
             <div className="col-span-2 overflow-hidden rounded-lg">
               <img 
                 src={G5}
