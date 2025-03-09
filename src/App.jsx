@@ -4,15 +4,13 @@ import Competitions from './components/Competitions';
 import Register from './components/Register';
 import Contact from './components/Contact';
 import Gallery from './components/Gallery';
-import AutoshowSection from './components/AutoShowSection';
 
 function App() {
   return (
-    <div className="min-h-screen" >
+    <div className="overflow-x-hidden">
       <Navbar />
       <Hero />
       <Competitions />
-      {/* <AutoshowSection /> */}
       <Gallery />
       <Register />
       <Contact />
