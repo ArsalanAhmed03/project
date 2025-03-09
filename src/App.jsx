@@ -12,7 +12,7 @@ function App() {
       <Navbar />
       <Hero />
       <Competitions />
-      <AutoshowSection />
+      {/* <AutoshowSection /> */}
       <Gallery />
       <Register />
       <Contact />
