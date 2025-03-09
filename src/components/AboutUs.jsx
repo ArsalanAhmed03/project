@@ -102,6 +102,15 @@ function AboutUs() {
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
               />
             </div>
+
+            {/* G6: Visible only on mobile */}
+            <div className="overflow-hidden rounded-lg block md:hidden">
+              <img 
+                src={G6}
+                alt="Additional gallery image"
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </div>
             
             {/* Horizontal rectangle: spans 2 columns on all screens */}
             <div className="col-span-2 overflow-hidden rounded-lg">
@@ -120,6 +129,17 @@ function AboutUs() {
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
               />
             </div>
+
+            {/* G4: Visible only on mobile */}
+            <div className="overflow-hidden rounded-lg block md:hidden">
+              <img 
+                src={G4}
+                alt="Additional gallery image"
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            
+            
           </div>
         </div>
       </div>
