@@ -8,7 +8,7 @@ import AutoshowSection from './components/AutoShowSection';
 
 function App() {
   return (
-    <div className="min-h-screen overflow-x-hidden" >
+    <div className="min-h-screen" >
       <Navbar />
       <Hero />
       <Competitions />

@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { Link } from 'react-scroll';
 
 const Register = () => {
   useEffect(() => {
@@ -25,9 +26,16 @@ const Register = () => {
             everyone. Don't miss your chance to showcase your talent—sign up
             today!
           </p>
-          <button className="border-2 border-primary text-primary bg-transparent px-4 py-2 rounded-full font-bold hover:bg-primary hover:text-white transition-colors duration-200">
-            REGISTER NOW
-          </button>
+          <Link 
+            to="competitions" 
+            smooth={true} 
+            duration={500} 
+            offset={-10} // adjust if you have a fixed header
+          >
+            <button className="border-2 border-primary text-primary bg-transparent px-4 py-2 rounded-full font-bold hover:bg-primary hover:text-white transition-colors duration-200">
+              REGISTER NOW
+            </button>
+          </Link>
         </div>
 
         <div 

@@ -94,7 +94,7 @@ function Gallery() {
   };
 
   return (
-    <div className="w-full max-w-7xl mx-auto px-4 py-4">
+    <div id= "Gallery" className="w-full max-w-7xl mx-auto px-4 py-4">
       {/* Gallery Heading */}
       <h2 className="text-4xl font-bold text-center mb-4">Gallery</h2>
       

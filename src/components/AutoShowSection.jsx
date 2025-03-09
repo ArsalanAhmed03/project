@@ -4,6 +4,7 @@ import 'aos/dist/aos.css';
 import C1 from "../assets/Cars/C1.jpg";
 import C2 from "../assets/Cars/C2.jpg";
 import C3 from "../assets/Cars/C3.jpg";
+import { Link } from 'react-scroll';
 
 function AutoshowSection() {
   useEffect(() => {
@@ -37,7 +38,20 @@ function AutoshowSection() {
                 Discover the latest models, cutting-edge technology, and innovative designs 
                 in the EV industry from Pakistan's leading EV manufacturers.
               </span>
+              {/* <span className="block mt-4">
+                Get More Info Now
+              </span> */}
             </p>
+        <Link 
+            to="contacts" 
+            smooth={true} 
+            duration={500} 
+            offset={-70} // adjust based on your fixed header height
+            >
+            <button className="px-8 py-4 bg-gradient-to-r from-[rgb(255,0,102)] to-[rgb(0,102,255)] text-white rounded-full font-semibold text-lg transform hover:scale-105 transition-all duration-300 hover:shadow-lg hover:shadow-pink-500/25">
+                Contact Us Now
+            </button>
+        </Link>
           </div>
           <div className="w-full md:w-1/2 grid grid-cols-2 gap-4" data-aos="fade-left">
             <div className="relative col-span-2">

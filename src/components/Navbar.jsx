@@ -1,10 +1,16 @@
 import { useState } from 'react';
 import { Link } from 'react-scroll';
 import LOGO from "../assets/Logo.png";
+import MAINLOGO from "../assets/MainLogo.png";
+
 
 
 const IEEELogo = () => (
   <img src={LOGO} alt="IEEE Logo" width="120" height="40" />
+);
+
+const IEEEMainLogo = () => (
+  <img src={MAINLOGO} alt="IEEE Main Logo" width="120" height="40" />
 );
 
 const Navbar = () => {
@@ -14,7 +20,7 @@ const Navbar = () => {
     { name: 'Competitions', to: 'competitions' },
     { name: 'Rule book', to: 'rulebook' },
     { name: 'Timeline', to: 'timeline' },
-    { name: 'Contact Us', to: 'contact' },
+    { name: 'Contact Us', to: 'contacts' },
   ];
 
   return (
@@ -23,9 +29,11 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex-shrink-0 flex items-center">
+            <IEEEMainLogo />
+          </div>
+          <div className="flex-shrink-0 flex items-center">
             <IEEELogo />
           </div>
-          
           <div className="hidden md:flex items-center space-x-4">
             {navItems.map((item) => (
               <Link

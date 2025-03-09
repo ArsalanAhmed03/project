@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { Link } from 'react-scroll';
 import Spiral from "../assets/spiral.png";
 
 const Hero = () => {
@@ -27,9 +28,16 @@ const Hero = () => {
             and exciting competitions. Connect, learn, and
             shape the future of technology.
           </p>
-          <button className="bg-primary text-white px-8 py-3 rounded-md text-lg hover:bg-opacity-90">
-            Discover more
-          </button>
+          <Link 
+            to="Gallery"
+            smooth={true}
+            duration={500}
+            offset={-70} // adjust if you have a fixed header
+          >
+            <button className="bg-primary text-white px-8 py-3 rounded-md text-lg hover:bg-opacity-90">
+              Discover more
+            </button>
+          </Link>
         </div>
         {/* Image Section */}
         <div data-aos="fade-left" className="md:w-1/2 mt-8 md:mt-0 flex justify-center">
