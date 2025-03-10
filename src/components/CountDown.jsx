@@ -43,7 +43,7 @@ const Countdown = ({ targetDate }) => {
       <div className="relative z-10">
         <div className="flex items-center justify-center mb-8">
           <Timer className="w-8 h-8 text-white mr-3" />
-          <h2 className="text-3xl font-bold text-white">Set Your Calenders</h2>
+          <h2 className="text-3xl font-bold text-white">Get ready for the 18th Edition of IEEE Week!</h2>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
           <TimeUnit value={timeLeft.months} label="Months" />
