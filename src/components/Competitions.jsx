@@ -12,7 +12,7 @@ import DC from "../assets/ICONS/DC.png";
 import RS from "../assets/ICONS/RS.png";
 import MB from "../assets/ICONS/MB.png";
 
-const RegisterationLink = 'https://docs.google.com/forms/d/e/1FAIpQLScUnTjZNXi95m5JPwB3Ibhp_MKIVUL5hGHifpc62vwxYxVRDw/viewform?usp=sharing'
+const RegisterationLink = 'https://docs.google.com/forms/d/e/1FAIpQLScUnTjZNXi95m5JPwB3Ibhp_MKIVUL5hGHifpc62vwxYxVRDw/viewform?usp=sharing';
 
 const competitions = [
   { id: 1, name: 'E-Gaming Competition', icon: GC, color: 'bg-white-500', link: RegisterationLink },
@@ -50,15 +50,17 @@ const Competitions = () => {
             <div
               key={competition.id}
               data-aos="fade-up"
-              className="flex flex-col items-center p-4 rounded-lg hover:transform hover:scale-105 transition-transform duration-200"
+              className="flex flex-col items-center p-4 rounded-lg transition-transform duration-200"
             >
               <a href={competition.link}>
-                <div className={`${competition.color} w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 flex items-center justify-center rounded-full mb-4`}>
+                <div
+                  className={`${competition.color} w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 flex items-center justify-center rounded-full mb-4 transform transition duration-300 hover:scale-110 hover:-translate-y-1 hover:rotate-3`}
+                >
                   <img
                     src={competition.icon}
                     alt={competition.name}
                     loading="lazy"
-                    className="w-full h-full object-contain transition duration-200 hover:opacity-75 hover:transform hover:scale-105"
+                    className="w-full h-full object-contain transition duration-200 animate-float"
                   />
                 </div>
               </a>

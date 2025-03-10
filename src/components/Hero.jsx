@@ -34,8 +34,11 @@ const Hero = () => {
             shape the future of technology.
           </p>
           <Link to="AboutUS" smooth={true} duration={500} offset={-70}>
-            <button className="bg-[#981A31] text-white px-8 py-3 rounded-md text-lg hover:bg-opacity-90">
-              Discover more
+            <button className="relative overflow-hidden group px-8 py-3 rounded-md text-lg border-2 border-[#981A31] text-[#981A31] bg-transparent font-bold">
+              <span className="absolute left-0 top-0 h-full w-0 bg-[#981A31] transition-all duration-300 ease-out group-hover:w-full"></span>
+              <span className="relative z-10 group-hover:text-white transition-colors duration-300">
+                Discover more
+              </span>
             </button>
           </Link>
         </div>

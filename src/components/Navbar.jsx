@@ -15,8 +15,6 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const navItems = useMemo(() => [
     { name: 'Competitions', to: 'competitions' },
-    // { name: 'RuleBook', to: 'rulebook' },
-    // { name: 'TimeLine', to: 'timeLine' },
     { name: 'Contact Us', to: 'contacts' },
   ], []);
   const toggleMenu = useCallback(() => {
@@ -43,24 +41,29 @@ const Navbar = () => {
               </Link>
             ))}
             <a 
-            href="https://docs.google.com/forms/d/e/1FAIpQLScUnTjZNXi95m5JPwB3Ibhp_MKIVUL5hGHifpc62vwxYxVRDw/viewform?usp=sharing" 
-            target="_blank" 
-            rel="noopener noreferrer"
+              href="https://docs.google.com/forms/d/e/1FAIpQLScUnTjZNXi95m5JPwB3Ibhp_MKIVUL5hGHifpc62vwxYxVRDw/viewform?usp=sharing" 
+              target="_blank" 
+              rel="noopener noreferrer"
             >
-            <button className="border-2 border-[#035B98] text-[#035B98] bg-transparent px-4 py-2 rounded-full font-bold hover:bg-[#035B98] hover:text-white transition-colors duration-200">
-              REGISTER
-            </button>
-          </a>
-          <a 
-            href="https://docs.google.com/forms/d/e/1FAIpQLSdRy942Wkx5yggJDrHEQF9gqJHoXNuPH5K_g5Z6oDHGRQ5exg/viewform" 
-            target="_blank" 
-            rel="noopener noreferrer"
-          >
-            <button className="border-2 border-[#981A31] text-[#981A31] bg-transparent px-4 py-2 rounded-full font-bold hover:bg-[#981A31] hover:text-white transition-colors duration-200">
-              JOIN OUR TEAM
-            </button>
-          </a>
-
+              <button className="relative overflow-hidden border-2 border-[#035B98] text-[#035B98] bg-transparent px-4 py-2 rounded-full font-bold group">
+                <span className="absolute left-0 top-0 h-full w-0 bg-[#035B98] transition-all duration-500 ease-out group-hover:w-full"></span>
+                <span className="relative z-10 group-hover:text-white transition-colors duration-500">
+                  REGISTER
+                </span>
+              </button>
+            </a>
+            <a 
+              href="https://docs.google.com/forms/d/e/1FAIpQLSdRy942Wkx5yggJDrHEQF9gqJHoXNuPH5K_g5Z6oDHGRQ5exg/viewform" 
+              target="_blank" 
+              rel="noopener noreferrer"
+            >
+              <button className="relative overflow-hidden border-2 border-[#981A31] text-[#981A31] bg-transparent px-4 py-2 rounded-full font-bold group">
+                <span className="absolute left-0 top-0 h-full w-0 bg-[#981A31] transition-all duration-500 ease-out group-hover:w-full"></span>
+                <span className="relative z-10 group-hover:text-white transition-colors duration-500">
+                  JOIN OUR TEAM
+                </span>
+              </button>
+            </a>
           </div>
           <div className="md:hidden flex items-center">
             <button onClick={toggleMenu} className="text-gray-700 hover:text-[#035B98]">
@@ -91,24 +94,29 @@ const Navbar = () => {
               </Link>
             ))}
             <a 
-  href="https://docs.google.com/forms/d/e/1FAIpQLScUnTjZNXi95m5JPwB3Ibhp_MKIVUL5hGHifpc62vwxYxVRDw/viewform?usp=sharing" 
-  target="_blank" 
-  rel="noopener noreferrer"
->
-  <button className="w-full bg-[#035B98] text-white px-4 py-2 rounded-md hover:bg-opacity-90 mt-2">
-    REGISTER
-  </button>
-</a>
-<a 
-  href="https://docs.google.com/forms/d/e/1FAIpQLSdRy942Wkx5yggJDrHEQF9gqJHoXNuPH5K_g5Z6oDHGRQ5exg/viewform" 
-  target="_blank" 
-  rel="noopener noreferrer"
->
-  <button className="w-full bg-[#981A31] text-white px-4 py-2 rounded-md hover:bg-opacity-90 mt-2">
-    JOIN OUR TEAM
-  </button>
-</a>
-
+              href="https://docs.google.com/forms/d/e/1FAIpQLScUnTjZNXi95m5JPwB3Ibhp_MKIVUL5hGHifpc62vwxYxVRDw/viewform?usp=sharing" 
+              target="_blank" 
+              rel="noopener noreferrer"
+            >
+              <button className="relative overflow-hidden w-full bg-[#035B98] text-white px-4 py-2 rounded-md group mt-2">
+                <span className="absolute left-0 top-0 h-full w-0 bg-[#035B98] transition-all duration-500 ease-out group-hover:w-full"></span>
+                <span className="relative z-10 group-hover:text-white transition-colors duration-500">
+                  REGISTER
+                </span>
+              </button>
+            </a>
+            <a 
+              href="https://docs.google.com/forms/d/e/1FAIpQLSdRy942Wkx5yggJDrHEQF9gqJHoXNuPH5K_g5Z6oDHGRQ5exg/viewform" 
+              target="_blank" 
+              rel="noopener noreferrer"
+            >
+              <button className="relative overflow-hidden w-full bg-[#981A31] text-white px-4 py-2 rounded-md group mt-2">
+                <span className="absolute left-0 top-0 h-full w-0 bg-[#981A31] transition-all duration-500 ease-out group-hover:w-full"></span>
+                <span className="relative z-10 group-hover:text-white transition-colors duration-500">
+                  JOIN OUR TEAM
+                </span>
+              </button>
+            </a>
           </div>
         </div>
       )}
