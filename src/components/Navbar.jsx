@@ -42,12 +42,25 @@ const Navbar = () => {
                 {item.name}
               </Link>
             ))}
+            <a 
+            href="https://docs.google.com/forms/d/e/1FAIpQLScUnTjZNXi95m5JPwB3Ibhp_MKIVUL5hGHifpc62vwxYxVRDw/viewform?usp=sharing" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            >
             <button className="border-2 border-[#035B98] text-[#035B98] bg-transparent px-4 py-2 rounded-full font-bold hover:bg-[#035B98] hover:text-white transition-colors duration-200">
               REGISTER
             </button>
+          </a>
+          <a 
+            href="https://docs.google.com/forms/d/e/1FAIpQLSdRy942Wkx5yggJDrHEQF9gqJHoXNuPH5K_g5Z6oDHGRQ5exg/viewform" 
+            target="_blank" 
+            rel="noopener noreferrer"
+          >
             <button className="border-2 border-[#981A31] text-[#981A31] bg-transparent px-4 py-2 rounded-full font-bold hover:bg-[#981A31] hover:text-white transition-colors duration-200">
               JOIN OUR TEAM
             </button>
+          </a>
+
           </div>
           <div className="md:hidden flex items-center">
             <button onClick={toggleMenu} className="text-gray-700 hover:text-[#035B98]">

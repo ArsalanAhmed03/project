@@ -6,25 +6,25 @@ const contacts = [
     name: 'Ali Nasir',
     position: 'General Secretary',
     phone: '+92 332 4286968',
-    link: 'https://example.com/ali-nasir',
+    link: 'https://wa.me/923324286968',
   },
   {
     name: 'Waleed Ahmed',
     position: 'Marketing Coordinator',
     phone: '+92 334 5619443',
-    link: 'https://example.com/waleed-ahmed',
+    link: 'https://wa.me/923345619443',
   },
   {
     name: 'Zaid Shabbir',
     position: 'Vice President',
     phone: '+92 333 2122981',
-    link: 'https://example.com/zaid-shabbir',
+    link: 'https://wa.me/923332122981',
   },
   {
     name: 'Arsalan Ahmed',
     position: 'Vice President',
     phone: '+92 305 4640255',
-    link: 'https://example.com/arsalan-ahmed',
+    link: 'https://wa.me/923054640255',
   },
 ];
 
@@ -67,10 +67,15 @@ function Contact() {
             <h2 className="text-2xl font-bold text-[#035B98]">IEEE NUCES Lahore chapter</h2>
           </div>
           <div className="text-center space-y-3">
-            <div className="flex items-center justify-center text-gray-700">
+            <a 
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=ieee@lhr.nu.edu.pk" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center justify-center text-gray-700"
+            >
               <Mail className="w-5 h-5 text-blue-600 mr-2" />
               <span>ieee@lhr.nu.edu.pk</span>
-            </div>
+            </a>
             <p className="text-[#981A31] mt-2">
               852-B Milaad St, Block B Faisal Town, Lahore, 54770
             </p>

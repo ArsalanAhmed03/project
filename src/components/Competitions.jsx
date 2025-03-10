@@ -12,17 +12,19 @@ import DC from "../assets/ICONS/DC.png";
 import RS from "../assets/ICONS/RS.png";
 import MB from "../assets/ICONS/MB.png";
 
+const RegisterationLink = 'https://docs.google.com/forms/d/e/1FAIpQLScUnTjZNXi95m5JPwB3Ibhp_MKIVUL5hGHifpc62vwxYxVRDw/viewform?usp=sharing'
+
 const competitions = [
-  { id: 1, name: 'E-Gaming Competition', icon: GC, color: 'bg-white-500', link: '#egaming' },
-  { id: 2, name: 'Drone Competition', icon: DC, color: 'bg-white-500', link: '#drone' },
-  { id: 3, name: '100 Minutes Programming', icon: MP, color: 'bg-white-500', link: '#programming' },
-  { id: 4, name: 'Speed Wiring', icon: SW, color: 'bg-white-500', link: '#speedwiring' },
-  { id: 5, name: 'Robo Soccer', icon: RS, color: 'bg-white-500', link: '#robosoccer' },
-  { id: 6, name: 'Cybersecurity Workshop', icon: CW, color: 'bg-white-500', link: '#cybersecurity' },
-  { id: 7, name: 'Project Exhibition', icon: PE, color: 'bg-white-600', link: '#exhibition' },
-  { id: 8, name: 'Mini Battle Bots', icon: MB, color: 'bg-white-500', link: '#minibattlebots' },
-  { id: 9, name: 'Line Following Robot', icon: LFR, color: 'bg-white-500', link: '#linefollowing' },
-  { id: 10, name: 'Battle Bots', icon: BB, color: 'bg-white-500', link: '#battlebots' },
+  { id: 1, name: 'E-Gaming Competition', icon: GC, color: 'bg-white-500', link: RegisterationLink },
+  { id: 2, name: 'Drone Competition', icon: DC, color: 'bg-white-500', link: RegisterationLink },
+  { id: 3, name: '100 Minutes Programming', icon: MP, color: 'bg-white-500', link: RegisterationLink },
+  { id: 4, name: 'Speed Wiring', icon: SW, color: 'bg-white-500', link: RegisterationLink },
+  { id: 5, name: 'Robo Soccer', icon: RS, color: 'bg-white-500', link: RegisterationLink },
+  { id: 6, name: 'Cybersecurity Workshop', icon: CW, color: 'bg-white-500', link: RegisterationLink },
+  { id: 7, name: 'Project Exhibition', icon: PE, color: 'bg-white-600', link: RegisterationLink },
+  { id: 8, name: 'Mini Battle Bots', icon: MB, color: 'bg-white-500', link: RegisterationLink },
+  { id: 9, name: 'Line Following Robot', icon: LFR, color: 'bg-white-500', link: RegisterationLink },
+  { id: 10, name: 'Battle Bots', icon: BB, color: 'bg-white-500', link: RegisterationLink },
 ];
 
 const Competitions = () => {
