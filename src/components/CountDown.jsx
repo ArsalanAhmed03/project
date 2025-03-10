@@ -39,7 +39,7 @@ const Countdown = ({ targetDate }) => {
 
   return (
     <div className="relative w-full max-w-4xl mx-auto p-8 rounded-2xl shadow-2xl overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-[#981A31] to-[#035B98] opacity-90"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-[#981A31] to-[#035B98]"></div>
       <div className="relative z-10">
         <div className="flex items-center justify-center mb-8">
           <Timer className="w-8 h-8 text-white mr-3" />
