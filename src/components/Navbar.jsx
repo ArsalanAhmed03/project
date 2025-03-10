@@ -90,12 +90,25 @@ const Navbar = () => {
                 {item.name}
               </Link>
             ))}
-            <button className="w-full bg-[#035B98] text-white px-4 py-2 rounded-md hover:bg-opacity-90 mt-2">
-              REGISTER
-            </button>
-            <button className="w-full bg-[#981A31] text-white px-4 py-2 rounded-md hover:bg-opacity-90 mt-2">
-              JOIN OUR TEAM
-            </button>
+            <a 
+  href="https://docs.google.com/forms/d/e/1FAIpQLScUnTjZNXi95m5JPwB3Ibhp_MKIVUL5hGHifpc62vwxYxVRDw/viewform?usp=sharing" 
+  target="_blank" 
+  rel="noopener noreferrer"
+>
+  <button className="w-full bg-[#035B98] text-white px-4 py-2 rounded-md hover:bg-opacity-90 mt-2">
+    REGISTER
+  </button>
+</a>
+<a 
+  href="https://docs.google.com/forms/d/e/1FAIpQLSdRy942Wkx5yggJDrHEQF9gqJHoXNuPH5K_g5Z6oDHGRQ5exg/viewform" 
+  target="_blank" 
+  rel="noopener noreferrer"
+>
+  <button className="w-full bg-[#981A31] text-white px-4 py-2 rounded-md hover:bg-opacity-90 mt-2">
+    JOIN OUR TEAM
+  </button>
+</a>
+
           </div>
         </div>
       )}
