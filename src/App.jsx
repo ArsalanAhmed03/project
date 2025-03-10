@@ -3,7 +3,6 @@ import Hero from './components/Hero';
 import Competitions from './components/Competitions';
 import Register from './components/Register';
 import Contact from './components/Contact';
-import Gallery from './components/Gallery';
 import AboutUs from './components/AboutUs';
 
 function App() {
@@ -13,7 +12,6 @@ function App() {
       <Hero />
       <Competitions />
       <AboutUs />
-      {/* <Gallery /> */}
       <Register />
       <Contact />
     </div>

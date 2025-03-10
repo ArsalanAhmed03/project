@@ -16,7 +16,6 @@ function AutoshowSection() {
 
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-gray-900 to-black py-20">
-      {/* Background decorative elements */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-0 -left-4 w-72 h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl animate-blob"></div>
         <div className="absolute top-0 -right-4 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-2000"></div>
@@ -38,20 +37,17 @@ function AutoshowSection() {
                 Discover the latest models, cutting-edge technology, and innovative designs 
                 in the EV industry from Pakistan's leading EV manufacturers.
               </span>
-              {/* <span className="block mt-4">
-                Get More Info Now
-              </span> */}
             </p>
-        <Link 
-            to="contacts" 
-            smooth={true} 
-            duration={500} 
-            offset={-70} // adjust based on your fixed header height
+            <Link 
+              to="contacts" 
+              smooth={true} 
+              duration={500} 
+              offset={-70}
             >
-            <button className="px-8 py-4 bg-gradient-to-r from-[rgb(255,0,102)] to-[rgb(0,102,255)] text-white rounded-full font-semibold text-lg transform hover:scale-105 transition-all duration-300 hover:shadow-lg hover:shadow-pink-500/25">
+              <button className="px-8 py-4 bg-gradient-to-r from-[rgb(255,0,102)] to-[rgb(0,102,255)] text-white rounded-full font-semibold text-lg transform hover:scale-105 transition-all duration-300 hover:shadow-lg hover:shadow-pink-500/25">
                 Contact Us Now
-            </button>
-        </Link>
+              </button>
+            </Link>
           </div>
           <div className="w-full md:w-1/2 grid grid-cols-2 gap-4" data-aos="fade-left">
             <div className="relative col-span-2">
