@@ -16,10 +16,13 @@ const Navbar = () => {
   const navItems = useMemo(() => [
     { name: 'Competitions', to: 'competitions' },
     { name: 'Contact Us', to: 'contacts' },
+    { name: 'Rule Book', href: '/rulebook.pdf', download: true }
   ], []);
+
   const toggleMenu = useCallback(() => {
     setIsOpen(prev => !prev);
   }, []);
+
   return (
     <nav className="fixed w-full bg-white/30 backdrop-blur-md z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -29,17 +32,28 @@ const Navbar = () => {
             <IEEELogo />
           </div>
           <div className="hidden md:flex items-center space-x-4">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                to={item.to}
-                smooth={true}
-                duration={500}
-                className="text-gray-700 hover:text-[#035B98] px-3 py-2 rounded-md cursor-pointer font-bold"
-              >
-                {item.name}
-              </Link>
-            ))}
+            {navItems.map((item) =>
+              item.href ? (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  download={item.download}
+                  className="text-gray-700 hover:text-[#035B98] px-3 py-2 rounded-md cursor-pointer font-bold"
+                >
+                  {item.name}
+                </a>
+              ) : (
+                <Link
+                  key={item.name}
+                  to={item.to}
+                  smooth={true}
+                  duration={500}
+                  className="text-gray-700 hover:text-[#035B98] px-3 py-2 rounded-md cursor-pointer font-bold"
+                >
+                  {item.name}
+                </Link>
+              )
+            )}
             <a 
               href="https://docs.google.com/forms/d/e/1FAIpQLScUnTjZNXi95m5JPwB3Ibhp_MKIVUL5hGHifpc62vwxYxVRDw/viewform?usp=sharing" 
               target="_blank" 
@@ -81,18 +95,30 @@ const Navbar = () => {
       {isOpen && (
         <div className="md:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                to={item.to}
-                smooth={true}
-                duration={500}
-                className="text-gray-700 hover:text-[#035B98] block px-3 py-2 rounded-md"
-                onClick={() => setIsOpen(false)}
-              >
-                {item.name}
-              </Link>
-            ))}
+            {navItems.map((item) =>
+              item.href ? (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  download={item.download}
+                  className="text-gray-700 hover:text-[#035B98] block px-3 py-2 rounded-md"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {item.name}
+                </a>
+              ) : (
+                <Link
+                  key={item.name}
+                  to={item.to}
+                  smooth={true}
+                  duration={500}
+                  className="text-gray-700 hover:text-[#035B98] block px-3 py-2 rounded-md"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {item.name}
+                </Link>
+              )
+            )}
             <a 
               href="https://docs.google.com/forms/d/e/1FAIpQLScUnTjZNXi95m5JPwB3Ibhp_MKIVUL5hGHifpc62vwxYxVRDw/viewform?usp=sharing" 
               target="_blank" 
