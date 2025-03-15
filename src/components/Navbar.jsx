@@ -16,7 +16,9 @@ const Navbar = () => {
   const navItems = useMemo(() => [
     { name: 'Competitions', to: 'competitions' },
     { name: 'Contact Us', to: 'contacts' },
-    { name: 'Rule Book', href: '/rulebook.pdf', download: true }
+    { name: 'Rule Book', href: '/IEEE RULEBOOK.pdf', download: true },
+    { name: 'Time Line', href: '/IEEE WEEK TIMELINE.pdf', download: true }
+
   ], []);
 
   const toggleMenu = useCallback(() => {
