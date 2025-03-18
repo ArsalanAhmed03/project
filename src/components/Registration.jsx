@@ -224,6 +224,15 @@ const RegistrationForm = () => {
     if (formData.discountCode.trim().toUpperCase() === "BULC20") {
       return Math.round(actualPrice * 0.8);
     }
+    if (formData.discountCode.trim().toUpperCase() === "ZAID20") {
+      return Math.round(actualPrice * 0.8);
+    }
+    if (formData.discountCode.trim().toUpperCase() === "ZAID25") {
+      return Math.round(actualPrice * 0.75);
+    }
+    if (formData.discountCode.trim().toUpperCase() === "ZAID30") {
+      return Math.round(actualPrice * 0.7);
+    }
     return earlyBird;
   };
 
