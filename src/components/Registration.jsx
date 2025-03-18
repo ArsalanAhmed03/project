@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { AdvancedImage } from '@cloudinary/react';
+import { Cloudinary } from '@cloudinary/url-gen';
 // Import logo assets from your ICONS folder.
 import MP from "../assets/ICONS/MP.png";
 import LFR from "../assets/ICONS/LFR.png";
@@ -12,15 +14,60 @@ import RS from "../assets/ICONS/RS.png";
 
 // Competition data with pricing and team settings.
 const competitionsData = [
-  { label: "Speed Wiring", value: "speed_wiring", price: 1275, maxMembers: 3 },
-  { label: "100 Minutes Programming", value: "programming", price: 1530, maxMembers: 3 },
-  { label: "Battle Bots", value: "battle_bots", maxMembers: 3, categories: { light: 2550, heavy: 4250 } },
-  { label: "Line Following Robot", value: "line_following", price: 1700, maxMembers: 3 },
-  { label: "Robo Soccer", value: "robo_soccer", price: 1530, maxMembers: 3 },
-  { label: "Drone Competition", value: "drone_competition", price: 2550, maxMembers: 3 },
-  { label: "E-Gaming", value: "e_gaming", maxMembers: 1, games: { fifa: 1275, tekken: 1275 } },
-  { label: "Project Exhibition", value: "project_exhibition", price: 2550, maxMembers: 3 },
-  { label: "Cybersecurity Workshop+Competition", value: "cybersecurity", price: 1275, maxMembers: 1 },
+  {
+    label: "Speed Wiring",
+    value: "speed_wiring",
+    price: 1275,
+    maxMembers: 3,
+  },
+  {
+    label: "100 Minutes Programming",
+    value: "programming",
+    price: 1530,
+    maxMembers: 3,
+  },
+  {
+    label: "Battle Bots",
+    value: "battle_bots",
+    maxMembers: 3,
+    categories: { light: 2550, heavy: 4250 },
+  },
+  {
+    label: "Line Following Robot",
+    value: "line_following",
+    price: 1700,
+    maxMembers: 3,
+  },
+  {
+    label: "Robo Soccer",
+    value: "robo_soccer",
+    price: 1530,
+    maxMembers: 3,
+  },
+  {
+    label: "Drone Competition",
+    value: "drone_competition",
+    price: 2550,
+    maxMembers: 3,
+  },
+  {
+    label: "E-Gaming",
+    value: "e_gaming",
+    maxMembers: 1,
+    games: { fifa: 1275, tekken: 1275 },
+  },
+  {
+    label: "Project Exhibition",
+    value: "project_exhibition",
+    price: 2550,
+    maxMembers: 3,
+  },
+  {
+    label: "Cybersecurity Workshop+Competition",
+    value: "cybersecurity",
+    price: 1275,
+    maxMembers: 1,
+  },
 ];
 
 // Mapping from competition value to its corresponding logo.
@@ -36,9 +83,20 @@ const competitionLogos = {
   cybersecurity: CW,
 };
 
+// Initialize Cloudinary instance with your cloud name only
+const cld = new Cloudinary({
+  cloud: {
+    cloudName: 'dsjimnqnc'
+  }
+});
+
+
 const RegistrationForm = () => {
   const [step, setStep] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
+  const [uploadResult, setUploadResult] = useState(null);
+  const [imageUploading, setImageUploading] = useState(false);
+
   const [formData, setFormData] = useState({
     email: "",
     // Default to Speed Wiring
@@ -57,8 +115,47 @@ const RegistrationForm = () => {
       accountHolderName: "",
       bankName: "",
       teamName: "",
+      proofOfPayment: null, // file object
+      cnicPicture: null,    // file object
     },
   });
+
+  // Helper: Convert a File object to a Base64 string.
+  const convertFileToBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = (error) => reject(error);
+    });
+  };
+
+   // Handles file input change and uploads to Cloudinary
+   const handleCFileChange = async (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setImageUploading(true);
+      try {
+        const base64Image = await convertFileToBase64(file);
+        const data = new FormData();
+        data.append('file', base64Image);
+        // IMPORTANT: Replace 'your_unsigned_upload_preset' with your actual unsigned upload preset
+        data.append('upload_preset', 'ml_ieee');
+        
+        const response = await fetch('https://api.cloudinary.com/v1_1/dsjimnqnc/upload', {
+          method: 'POST',
+          body: data
+        });
+        
+        const result = await response.json();
+        setUploadResult(result);
+      } catch (error) {
+        console.error("Upload error:", error);
+      } finally {
+        setImageUploading(false);
+      }
+    }
+  };
 
   // Validate required fields for each step.
   const validateStep = () => {
@@ -100,7 +197,9 @@ const RegistrationForm = () => {
         !p.paymentDate ||
         !p.accountHolderName.trim() ||
         !p.bankName.trim() ||
-        !p.teamName.trim()
+        !p.teamName.trim() ||
+        !p.proofOfPayment ||
+        !p.cnicPicture
       ) {
         alert("All payment fields are required.");
         return false;
@@ -147,6 +246,14 @@ const RegistrationForm = () => {
     setFormData((prev) => ({ ...prev, participants: updatedParticipants }));
   };
 
+  // Handle file input changes.
+  const handleFileChange = (field, file) => {
+    setFormData((prev) => ({
+      ...prev,
+      payment: { ...prev.payment, [field]: file },
+    }));
+  };
+
   // Get the current competition object.
   const currentCompetition = competitionsData.find(
     (c) => c.value === formData.competition
@@ -178,22 +285,54 @@ const RegistrationForm = () => {
     return basePrice;
   };
 
+  // Final submission: convert files to Base64, send data, show alert, and redirect.
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validateStep()) return;
 
     setIsLoading(true);
 
+    // Convert file inputs to Base64 strings.
+    let proofOfPaymentBase64 = "";
+    let cnicPictureBase64 = "";
+    let proofOfPaymentMime = "";
+    let cnicPictureMime = "";
+    let proofOfPaymentName = "";
+    let cnicPictureName = "";
+
+    if (formData.payment.proofOfPayment) {
+      const base64String = await  (formData.payment.proofOfPayment);
+      proofOfPaymentBase64 = base64String.split(",")[1];
+      proofOfPaymentMime = formData.payment.proofOfPayment.type;
+      proofOfPaymentName = formData.payment.proofOfPayment.name;
+    }
+
+    if (formData.payment.cnicPicture) {
+      const base64String2 = await convertFileToBase64(formData.payment.cnicPicture);
+      cnicPictureBase64 = base64String2.split(",")[1];
+      cnicPictureMime = formData.payment.cnicPicture.type;
+      cnicPictureName = formData.payment.cnicPicture.name;
+    }
+
     const payload = {
       ...formData,
       computedPrice: getPrice(),
+      payment: {
+        ...formData.payment,
+        proofOfPaymentBase64,
+        cnicPictureBase64,
+        proofOfPaymentMime,
+        cnicPictureMime,
+        proofOfPaymentName,
+        cnicPictureName,
+      },
     };
 
     console.log("Submitting data:", payload);
 
     try {
       const response = await fetch(
-        "https://script.google.com/macros/s/AKfycbwHAkCOBabUTtcuuXWzwoTmfEvt7xrIsF_QyFOr4A-IPXHmS7gTaxGrnsRMXMtCG9XczQ/exec",
+        "https://script.google.com/macros/s/AKfycbyDcww7xauSv_wIGMy2qlYlers9amuTCYsUf-BARWPPO9ZtM28bA4mgZ799l_qaYTn-MA/exec",
         {
           method: "POST",
           mode: "no-cors",
@@ -201,6 +340,7 @@ const RegistrationForm = () => {
           body: JSON.stringify(payload),
         }
       );
+      // With no-cors mode, response is opaque so we assume success if no error is thrown.
       if (response.type === "opaque" || response.ok) {
         setIsLoading(false);
         alert("Data Saved");
@@ -221,8 +361,8 @@ const RegistrationForm = () => {
     <div className="max-w-3xl mx-auto p-4 pt-20">
       {isLoading && (
         <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-gray-900 bg-opacity-75">
-            <div className="text-white text-3xl mb-4">Submitting, please wait...</div>
-            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-white"></div>
+          <div className="text-white text-3xl mb-4">Submitting, may take a minute...</div>
+          {/* You can add a spinner here if desired */}
         </div>
       )}
       <h1 className="text-3xl font-bold mb-6 text-center">
@@ -647,6 +787,43 @@ const RegistrationForm = () => {
                   required
                 />
               </div>
+            </div>
+            <div className="mb-4">
+              <label className="block font-medium mb-1">Upload Picture of Proof of Payment</label>
+              <input
+                type="file"
+                // onChange={(e) =>
+                //   handleFileChange("proofOfPayment", e.target.files[0])
+                // }
+                onChange={handleCFileChange}
+                className="w-full"
+                required
+              />
+            </div>
+            {imageUploading && <p>Uploading...</p>}
+            blah
+            {uploadResult && (
+        <div style={{ marginTop: '20px' }}>
+          <p>
+            <strong>Uploaded Image URL:</strong>{' '}
+            <a href={uploadResult.secure_url} target="_blank" rel="noopener noreferrer">
+              {uploadResult.secure_url}
+            </a>
+          </p>
+          {/* Render the image using Cloudinary's React component */}
+          <AdvancedImage cldImg={cld.image(uploadResult.public_id)} alt="Uploaded" />
+        </div>
+      )}
+            <div className="mb-4">
+              <label className="block font-medium mb-1">Upload CNIC Picture 1</label>
+              <input
+                type="file"
+                onChange={(e) =>
+                  handleFileChange("cnicPicture", e.target.files[0])
+                }
+                className="w-full"
+                required
+              />
             </div>
             <div className="flex justify-between">
               <button
