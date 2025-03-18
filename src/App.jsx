@@ -32,7 +32,7 @@ function App() {
         {/* Home page route */}
         <Route path="/" element={<HomePage targetDate={targetDate} />} />
         {/* Registration page route */}
-        <Route path="/register" element={<RegistrationForm />} />
+        {/* <Route path="/register" element={<RegistrationForm />} /> */}
       </Routes>
     </BrowserRouter>
   );
