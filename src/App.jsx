@@ -17,7 +17,7 @@ function HomePage({ targetDate }) {
       <Countdown targetDate={targetDate} />
       <Competitions />
       <AboutUs />
-      {/* <Register /> */}
+      <Register />
       <Contact />
     </>
   );
