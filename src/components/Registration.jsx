@@ -83,6 +83,7 @@ const competitionLogos = {
 
 const RegistrationForm = () => {
   const [step, setStep] = useState(1);
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
     // Default to Speed Wiring
@@ -238,17 +239,18 @@ const RegistrationForm = () => {
     })();
 
     if (basePrice === "") return "";
-    
     if (formData.discountCode.trim().toUpperCase() === "PUCIT30") {
       return Math.round(basePrice * 0.7);
     }
     return basePrice;
   };
 
-  // Final submission: convert files to Base64, send data, and then alert and redirect.
+  // Final submission: convert files to Base64, send data, show alert, and redirect.
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validateStep()) return;
+
+    setIsLoading(true);
 
     // Convert file inputs to Base64 strings.
     let proofOfPaymentBase64 = "";
@@ -260,7 +262,6 @@ const RegistrationForm = () => {
 
     if (formData.payment.proofOfPayment) {
       const base64String = await convertFileToBase64(formData.payment.proofOfPayment);
-      // Remove the prefix "data:*/*;base64,"
       proofOfPaymentBase64 = base64String.split(",")[1];
       proofOfPaymentMime = formData.payment.proofOfPayment.type;
       proofOfPaymentName = formData.payment.proofOfPayment.name;
@@ -299,24 +300,31 @@ const RegistrationForm = () => {
           body: JSON.stringify(payload),
         }
       );
-      // When using no-cors, the response is opaque.
-      // We assume success if no error was thrown.
+      // With no-cors mode, response is opaque so we assume success if no error is thrown.
       if (response.type === "opaque" || response.ok) {
+        setIsLoading(false);
         alert("Data Saved");
         window.location.href = "/";
       } else {
+        setIsLoading(false);
         alert("Data Not Saved");
         window.location.href = "/";
       }
     } catch (error) {
+      setIsLoading(false);
       alert("Data Not Saved");
       window.location.href = "/";
     }
   };
 
   return (
-    // Extra top padding added.
     <div className="max-w-3xl mx-auto p-4 pt-20">
+      {isLoading && (
+        <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-gray-900 bg-opacity-75">
+          <div className="text-white text-3xl mb-4">Submitting, may take a minute...</div>
+          {/* You can add a spinner here if desired */}
+        </div>
+      )}
       <h1 className="text-3xl font-bold mb-6 text-center">
         IEEE WEEK '25 REGISTRATION FORM
       </h1>
@@ -341,7 +349,6 @@ const RegistrationForm = () => {
                 value={formData.competition}
                 onChange={(e) => {
                   updateCompetitionDetail("competition", e.target.value);
-                  // Reset extra options and participant list on competition change.
                   setFormData((prev) => ({
                     ...prev,
                     competitionCategory: "",
@@ -485,10 +492,7 @@ const RegistrationForm = () => {
           <div>
             <h2 className="text-2xl font-semibold mb-4">Step 3: Participant Details</h2>
             {formData.participants.map((participant, index) => (
-              <div
-                key={index}
-                className="p-4 border rounded mb-4 relative bg-gray-50"
-              >
+              <div key={index} className="p-4 border rounded mb-4 relative bg-gray-50">
                 <h3 className="font-semibold mb-2">Participant {index + 1}</h3>
                 {formData.participants.length > 1 && (
                   <button
@@ -504,9 +508,7 @@ const RegistrationForm = () => {
                   <input
                     type="text"
                     value={participant.name}
-                    onChange={(e) =>
-                      updateParticipant(index, "name", e.target.value)
-                    }
+                    onChange={(e) => updateParticipant(index, "name", e.target.value)}
                     className="w-full border px-3 py-2 rounded"
                     required
                   />
@@ -516,9 +518,7 @@ const RegistrationForm = () => {
                   <input
                     type="text"
                     value={participant.cnic}
-                    onChange={(e) =>
-                      updateParticipant(index, "cnic", e.target.value)
-                    }
+                    onChange={(e) => updateParticipant(index, "cnic", e.target.value)}
                     className="w-full border px-3 py-2 rounded"
                     required
                   />
@@ -532,9 +532,7 @@ const RegistrationForm = () => {
                         name={`gender-${index}`}
                         value="male"
                         checked={participant.gender === "male"}
-                        onChange={(e) =>
-                          updateParticipant(index, "gender", e.target.value)
-                        }
+                        onChange={(e) => updateParticipant(index, "gender", e.target.value)}
                         className="mr-1"
                         required
                       />
@@ -546,9 +544,7 @@ const RegistrationForm = () => {
                         name={`gender-${index}`}
                         value="female"
                         checked={participant.gender === "female"}
-                        onChange={(e) =>
-                          updateParticipant(index, "gender", e.target.value)
-                        }
+                        onChange={(e) => updateParticipant(index, "gender", e.target.value)}
                         className="mr-1"
                         required
                       />
@@ -561,9 +557,7 @@ const RegistrationForm = () => {
                   <input
                     type="text"
                     value={participant.phn}
-                    onChange={(e) =>
-                      updateParticipant(index, "phn", e.target.value)
-                    }
+                    onChange={(e) => updateParticipant(index, "phn", e.target.value)}
                     className="w-full border px-3 py-2 rounded"
                     required
                   />
@@ -573,9 +567,7 @@ const RegistrationForm = () => {
                   <input
                     type="email"
                     value={participant.email}
-                    onChange={(e) =>
-                      updateParticipant(index, "email", e.target.value)
-                    }
+                    onChange={(e) => updateParticipant(index, "email", e.target.value)}
                     className="w-full border px-3 py-2 rounded"
                     required
                   />
@@ -786,10 +778,7 @@ const RegistrationForm = () => {
               >
                 Back
               </button>
-              <button
-                type="submit"
-                className="bg-green-600 text-white px-4 py-2 rounded"
-              >
+              <button type="submit" className="bg-green-600 text-white px-4 py-2 rounded">
                 Submit Registration
               </button>
             </div>
