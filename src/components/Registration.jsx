@@ -221,8 +221,8 @@ const RegistrationForm = () => {
     <div className="max-w-3xl mx-auto p-4 pt-20">
       {isLoading && (
         <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-gray-900 bg-opacity-75">
-          <div className="text-white text-3xl mb-4">Submitting, please wait...</div>
-          {/* You can add a spinner here if desired */}
+            <div className="text-white text-3xl mb-4">Submitting, please wait...</div>
+            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-white"></div>
         </div>
       )}
       <h1 className="text-3xl font-bold mb-6 text-center">
