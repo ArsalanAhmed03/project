@@ -15,7 +15,7 @@ import RS from "../assets/ICONS/RS.png";
 const competitionsData = [
   { label: "Speed Wiring", value: "speed_wiring", actualPrice: 1500, earlyBird: 1275, maxMembers: 3 },
   { label: "100 Minutes Programming", value: "programming", actualPrice: 1800, earlyBird: 1530, maxMembers: 3 },
-  { label: "Battle Bots", value: "battle_bots", actualPrice: 5000, earlyBird: 4250, maxMembers: 3, categories: { light: 5000, heavy: 5000 } },
+  { label: "Battle Bots", value: "battle_bots", actualPrice: 5000, earlyBird: 4250, maxMembers: 3, categories: { heavy: { actualPrice: 5000, earlyBird: 4250 }, light: { actualPrice: 3000, earlyBird: 2550 } } },
   { label: "Line Following Robot", value: "line_following", actualPrice: 3000, earlyBird: 2550, maxMembers: 3 },
   { label: "Robo Soccer", value: "robo_soccer", actualPrice: 2000, earlyBird: 1700, maxMembers: 3 },
   { label: "Drone Competition", value: "drone_competition", actualPrice: 3000, earlyBird: 2550, maxMembers: 3 },
@@ -191,10 +191,38 @@ const RegistrationForm = () => {
   // Price calculation: if discount code "PUCIT30" is valid, apply 30% discount on actual price.
   const getPrice = () => {
     if (!currentCompetition) return "";
-    const actualPrice = currentCompetition.actualPrice;
-    const earlyBird = currentCompetition.earlyBird;
+    let actualPrice = currentCompetition.actualPrice;
+    let earlyBird = currentCompetition.earlyBird;
+
+    // Check if Battle Bots and category selected
+    if (formData.competition === "battle_bots" && formData.competitionCategory) {
+      const category = currentCompetition.categories[formData.competitionCategory];
+      if (category) {
+        actualPrice = category.actualPrice;
+        earlyBird = category.earlyBird;
+      }
+    }
+
     if (formData.discountCode.trim().toUpperCase() === "PUCIT30") {
       return Math.round(actualPrice * 0.7);
+    }
+    if (formData.competition === "programming" && formData.discountCode.trim().toUpperCase() === "ACMNU30") {
+      return Math.round(actualPrice * 0.7);
+    }
+    if (formData.discountCode.trim().toUpperCase() === "LGU20") {
+      return Math.round(actualPrice * 0.8);
+    }
+    if (formData.discountCode.trim().toUpperCase() === "CUI20") {
+      return Math.round(actualPrice * 0.8);
+    }
+    if (formData.discountCode.trim().toUpperCase() === "ITU20") {
+      return Math.round(actualPrice * 0.8);
+    }
+    if (formData.discountCode.trim().toUpperCase() === "SUPERIOR20") {
+      return Math.round(actualPrice * 0.8);
+    }
+    if (formData.discountCode.trim().toUpperCase() === "BULC20") {
+      return Math.round(actualPrice * 0.8);
     }
     return earlyBird;
   };
@@ -335,26 +363,38 @@ const RegistrationForm = () => {
           <div>
             <h2 className="text-2xl font-semibold mb-4">Step 2: Competition Details</h2>
             <div className="mb-4 p-4 border rounded bg-gray-100 flex items-center space-x-4">
-              <div className="mb-2">
-                {formData.competition && competitionLogos[formData.competition] ? (
-                  <img src={competitionLogos[formData.competition]} alt="Competition Logo" className="w-24 h-24 object-contain" />
-                ) : (
-                  <div className="w-24 h-24 bg-gray-300 flex items-center justify-center">Logo</div>
-                )}
-              </div>
-              <div>
-                <strong>Actual Price:</strong> Rs. {currentCompetition ? currentCompetition.actualPrice : "-"} <br />
-                <strong>Early Bird Price:</strong> Rs. {currentCompetition ? currentCompetition.earlyBird : "-"} <br />
-                <strong>Price to Pay:</strong> Rs. {getPrice() ? getPrice() : "Select options below"}
-              </div>
-            </div>
+  <div className="mb-2">
+    {formData.competition && competitionLogos[formData.competition] ? (
+      <img
+        src={competitionLogos[formData.competition]}
+        alt="Competition Logo"
+        className="w-24 h-24 object-contain"
+      />
+    ) : (
+      <div className="w-24 h-24 bg-gray-300 flex items-center justify-center">Logo</div>
+    )}
+  </div>
+  <div>
+    <strong>Actual Price:</strong> Rs.{" "}
+    {formData.competition === "battle_bots" && formData.competitionCategory
+      ? currentCompetition.categories[formData.competitionCategory].actualPrice
+      : currentCompetition.actualPrice}{" "}
+    <br />
+    <strong>Early Bird Price:</strong> Rs.{" "}
+    {formData.competition === "battle_bots" && formData.competitionCategory
+      ? currentCompetition.categories[formData.competitionCategory].earlyBird
+      : currentCompetition.earlyBird}{" "}
+    <br />
+    <strong>Price to Pay:</strong> Rs. {getPrice() ? getPrice() : "Select options below"}
+  </div>
+</div>
             {formData.competition === "battle_bots" && (
               <div className="mb-4">
                 <label className="block font-medium mb-1">Choose Category</label>
                 <select value={formData.competitionCategory} onChange={(e) => updateCompetitionDetail("competitionCategory", e.target.value)} className="w-full border px-3 py-2 rounded" required>
-                  <option value="">Select Category</option>
-                  <option value="light">Light Weight</option>
+                  {/* <option value="">Select Category</option> */}
                   <option value="heavy">Heavy Weight</option>
+                  <option value="light">Light Weight</option>
                 </select>
               </div>
             )}
