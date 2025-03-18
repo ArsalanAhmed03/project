@@ -16,7 +16,7 @@ const competitionsData = [
   { label: "Speed Wiring", value: "speed_wiring", actualPrice: 1500, earlyBird: 1275, maxMembers: 3 },
   { label: "100 Minutes Programming", value: "programming", actualPrice: 1800, earlyBird: 1530, maxMembers: 3 },
   { label: "Battle Bots", value: "battle_bots", actualPrice: 5000, earlyBird: 4250, maxMembers: 3, categories: { heavy: { actualPrice: 5000, earlyBird: 4250 }, light: { actualPrice: 3000, earlyBird: 2550 } } },
-  { label: "Line Following Robot", value: "line_following", actualPrice: 3000, earlyBird: 2550, maxMembers: 3 },
+  { label: "Line Following Robot", value: "line_following", actualPrice: 2000, earlyBird: 1700, maxMembers: 3 },
   { label: "Robo Soccer", value: "robo_soccer", actualPrice: 2000, earlyBird: 1700, maxMembers: 3 },
   { label: "Drone Competition", value: "drone_competition", actualPrice: 3000, earlyBird: 2550, maxMembers: 3 },
   { label: "E-Gaming", value: "e_gaming", actualPrice: 1500, earlyBird: 1275, maxMembers: 1, games: { fifa: 1500, tekken: 1500 } },
