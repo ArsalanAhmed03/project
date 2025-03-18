@@ -1,5 +1,6 @@
 import React, { useState, useCallback, useMemo } from 'react';
-import { Link } from 'react-scroll';
+import { Link as ScrollLink } from 'react-scroll';
+import { Link as RouterLink } from 'react-router-dom';
 import LOGO from "../assets/Logo.png";
 import MAINLOGO from "../assets/MainLogo.png";
 
@@ -18,7 +19,6 @@ const Navbar = () => {
     { name: 'Contact Us', to: 'contacts' },
     { name: 'Rule Book', href: '/IEEE RULEBOOK.pdf', download: true },
     { name: 'Time Line', href: '/IEEE WEEK TIMELINE.pdf', download: true }
-
   ], []);
 
   const toggleMenu = useCallback(() => {
@@ -30,8 +30,12 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex-shrink-0 flex items-center space-x-2">
+          <RouterLink to="/">
             <IEEEMainLogo />
+          </RouterLink>
+          <RouterLink to="/">
             <IEEELogo />
+          </RouterLink>
           </div>
           <div className="hidden md:flex items-center space-x-4">
             {navItems.map((item) =>
@@ -45,7 +49,7 @@ const Navbar = () => {
                   {item.name}
                 </a>
               ) : (
-                <Link
+                <ScrollLink
                   key={item.name}
                   to={item.to}
                   smooth={true}
@@ -53,21 +57,18 @@ const Navbar = () => {
                   className="text-gray-700 hover:text-[#035B98] px-3 py-2 rounded-md cursor-pointer font-bold"
                 >
                   {item.name}
-                </Link>
+                </ScrollLink>
               )
             )}
-            <a 
-              href="https://docs.google.com/forms/d/e/1FAIpQLScUnTjZNXi95m5JPwB3Ibhp_MKIVUL5hGHifpc62vwxYxVRDw/viewform?usp=sharing" 
-              target="_blank" 
-              rel="noopener noreferrer"
-            >
+            {/* REGISTER button navigates to the registration form route */}
+            <RouterLink to="/register">
               <button className="relative overflow-hidden border-2 border-[#035B98] text-[#035B98] bg-transparent px-4 py-2 rounded-full font-bold group">
                 <span className="absolute left-0 top-0 h-full w-0 bg-[#035B98] transition-all duration-500 ease-out group-hover:w-full"></span>
                 <span className="relative z-10 group-hover:text-white transition-colors duration-500">
                   REGISTER
                 </span>
               </button>
-            </a>
+            </RouterLink>
             <a 
               href="https://docs.google.com/forms/d/e/1FAIpQLSdRy942Wkx5yggJDrHEQF9gqJHoXNuPH5K_g5Z6oDHGRQ5exg/viewform" 
               target="_blank" 
@@ -109,7 +110,7 @@ const Navbar = () => {
                   {item.name}
                 </a>
               ) : (
-                <Link
+                <ScrollLink
                   key={item.name}
                   to={item.to}
                   smooth={true}
@@ -118,21 +119,21 @@ const Navbar = () => {
                   onClick={() => setIsOpen(false)}
                 >
                   {item.name}
-                </Link>
+                </ScrollLink>
               )
             )}
-            <a 
-              href="https://docs.google.com/forms/d/e/1FAIpQLScUnTjZNXi95m5JPwB3Ibhp_MKIVUL5hGHifpc62vwxYxVRDw/viewform?usp=sharing" 
-              target="_blank" 
-              rel="noopener noreferrer"
-            >
-              <button className="relative overflow-hidden w-full bg-[#035B98] text-white px-4 py-2 rounded-md group mt-2">
+            {/* Mobile REGISTER button using RouterLink */}
+            <RouterLink to="/register">
+              <button 
+                onClick={() => setIsOpen(false)}
+                className="relative overflow-hidden w-full bg-[#035B98] text-white px-4 py-2 rounded-md group mt-2"
+              >
                 <span className="absolute left-0 top-0 h-full w-0 bg-[#035B98] transition-all duration-500 ease-out group-hover:w-full"></span>
                 <span className="relative z-10 group-hover:text-white transition-colors duration-500">
                   REGISTER
                 </span>
               </button>
-            </a>
+            </RouterLink>
             <a 
               href="https://docs.google.com/forms/d/e/1FAIpQLSdRy942Wkx5yggJDrHEQF9gqJHoXNuPH5K_g5Z6oDHGRQ5exg/viewform" 
               target="_blank" 
