@@ -7,6 +7,7 @@ import RegistrationForm from './components/Registration';
 import Contact from './components/Contact';
 import AboutUs from './components/AboutUs';
 import Countdown from './components/CountDown';
+import Register from './components/Register';
 
 // Define a homepage component that bundles your main sections.
 function HomePage({ targetDate }) {
@@ -16,6 +17,7 @@ function HomePage({ targetDate }) {
       <Countdown targetDate={targetDate} />
       <Competitions />
       <AboutUs />
+      <Register />
       <Contact />
     </>
   );

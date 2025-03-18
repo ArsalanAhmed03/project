@@ -25,7 +25,7 @@ const Register = () => {
             Ready to put your skills to the test? Register now for IEEE Week competitions and compete in the challenges that excite you! Whether you're into coding, robotics, or problem-solving, there's something for everyone. Don't miss your chance to showcase your talent—sign up today!
           </p>
           <a 
-            href="https://docs.google.com/forms/d/e/1FAIpQLScUnTjZNXi95m5JPwB3Ibhp_MKIVUL5hGHifpc62vwxYxVRDw/viewform?usp=sharing" 
+            href="/register" 
             target="_blank" 
             rel="noopener noreferrer"
           >

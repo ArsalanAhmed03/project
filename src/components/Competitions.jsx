@@ -12,7 +12,7 @@ import DC from "../assets/ICONS/DC.png";
 import RS from "../assets/ICONS/RS.png";
 import MB from "../assets/ICONS/MB.png";
 
-const RegisterationLink = 'https://docs.google.com/forms/d/e/1FAIpQLScUnTjZNXi95m5JPwB3Ibhp_MKIVUL5hGHifpc62vwxYxVRDw/viewform?usp=sharing';
+const RegisterationLink = '/register';
 
 const competitions = [
   { id: 1, name: 'E-Gaming Competition', icon: GC, color: 'bg-white-500', link: RegisterationLink },
