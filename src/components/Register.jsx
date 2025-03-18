@@ -1,3 +1,6 @@
+import React from "react";
+import { Link } from "react-router-dom";
+
 const Register = () => {
   return (
     <section id="register" className="py-20">
@@ -7,20 +10,16 @@ const Register = () => {
             Register Now
           </h2>
           <p className="text-gray-600 mb-8">
-            Ready to put your skills to the test? Register now for IEEE Week
-            competitions and compete in the challenges that excite you! Whether
-            you're into coding, robotics, or problem-solving, there's something
-            for everyone. Don't miss your chance to showcase your talent—sign up
-            today!
+            Ready to put your skills to the test? Register now for IEEE Week competitions and compete in the challenges that excite you! Whether you're into coding, robotics, or problem-solving, there's something for everyone. Don't miss your chance to showcase your talent—sign up today!
           </p>
-          <a href="/register" target="_blank" rel="noopener noreferrer">
+          <Link to="/register">
             <button className="relative overflow-hidden border-2 border-[#035B98] text-[#035B98] bg-transparent px-4 py-2 rounded-full font-bold group">
               <span className="absolute left-0 top-0 h-full w-0 bg-[#035B98] transition-all duration-300 ease-out group-hover:w-full"></span>
               <span className="relative z-10 group-hover:text-white transition-colors duration-300">
                 REGISTER NOW
               </span>
             </button>
-          </a>
+          </Link>
         </div>
         <div className="mt-16 bg-white rounded-2xl shadow-xl p-8 md:p-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-[#981A31]">
