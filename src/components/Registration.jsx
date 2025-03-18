@@ -298,7 +298,7 @@ const RegistrationForm = () => {
       );
       if (response.type === "opaque" || response.ok) {
         setIsLoading(false);
-        alert("Data Saved");
+        alert("Registration Successful! You will receive a payment confirmation mail in 3-4 working days.");
         window.location.href = "/";
       } else {
         setIsLoading(false);
