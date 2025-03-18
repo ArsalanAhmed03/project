@@ -1,3 +1,4 @@
+import { Link as RouterLink } from 'react-router-dom';
 import { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -52,7 +53,7 @@ const Competitions = () => {
               data-aos="fade-up"
               className="flex flex-col items-center p-4 rounded-lg transition-transform duration-200"
             >
-              <a href={competition.link}>
+              <RouterLink to={competition.link}>
                 <div
                   className={`${competition.color} w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 flex items-center justify-center rounded-full mb-4 transform transition duration-300 hover:scale-110 hover:-translate-y-1 hover:rotate-3`}
                 >
@@ -63,7 +64,7 @@ const Competitions = () => {
                     className="w-full h-full object-contain transition duration-200 animate-float"
                   />
                 </div>
-              </a>
+              </RouterLink>
               <h3 className="text-center text-sm font-medium text-[#981A31]">{competition.name}</h3>
             </div>
           ))}
