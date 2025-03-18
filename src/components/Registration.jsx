@@ -206,7 +206,7 @@ const RegistrationForm = () => {
     if (formData.discountCode.trim().toUpperCase() === "PUCIT30") {
       return Math.round(actualPrice * 0.7);
     }
-    if (formData.competition === "programming" && formData.discountCode.trim().toUpperCase() === "ACMNU30") {
+    if ((formData.competition === "programming" || formData.competition === "cybersecurity") && formData.discountCode.trim().toUpperCase() === "ACMNU30") {
       return Math.round(actualPrice * 0.7);
     }
     if (formData.discountCode.trim().toUpperCase() === "LGU20") {
