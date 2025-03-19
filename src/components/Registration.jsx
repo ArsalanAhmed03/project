@@ -233,6 +233,9 @@ const RegistrationForm = () => {
     if (formData.discountCode.trim().toUpperCase() === "ZAID30") {
       return Math.round(actualPrice * 0.7);
     }
+    if (formData.discountCode.trim().toUpperCase() === "FASTNU25") {
+      return Math.round(actualPrice * 0.75);
+    }
     return earlyBird;
   };
 
