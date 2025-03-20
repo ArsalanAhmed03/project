@@ -392,11 +392,13 @@ const RegistrationForm = () => {
       ? currentCompetition.categories[formData.competitionCategory].actualPrice
       : currentCompetition.actualPrice}{" "}
     <br />
-    <strong>Early Bird Price:</strong> Rs.{" "}
-    {formData.competition === "battle_bots" && formData.competitionCategory
-      ? currentCompetition.categories[formData.competitionCategory].earlyBird
-      : currentCompetition.earlyBird}{" "}
+    
+    <strong>Discount Code: </strong> 
+    {formData.discountCode.trim().toUpperCase() === "PUCIT30" 
+      ? `PUCIT30 (30%)` 
+      : `Early Bird (15%)`}
     <br />
+    
     <strong>Price to Pay:</strong> Rs. {getPrice() ? getPrice() : "Select options below"}
   </div>
 </div>
