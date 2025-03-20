@@ -394,9 +394,21 @@ const RegistrationForm = () => {
     <br />
     
     <strong>Discount Code: </strong> 
-    {formData.discountCode.trim().toUpperCase() === "PUCIT30" 
-      ? `PUCIT30 (30%)` 
-      : `Early Bird (15%)`}
+    {
+  {
+    PUCIT30: "PUCIT30 (30%)",
+    ACMNU30: "ACMNU30 (30%)",
+    LGU20: "LGU20 (20%)",
+    CUI20: "CUI20 (20%)",
+    ITU20: "ITU20 (20%)",
+    SUPERIOR20: "SUPERIOR20 (20%)",
+    BULC20: "BULC20 (20%)",
+    ZAID20: "ZAID20 (20%)",
+    ZAID25: "ZAID25 (25%)",
+    ZAID30: "ZAID30 (30%)",
+    FASTNU25: "FASTNU25 (25%)",
+  }[formData.discountCode.trim().toUpperCase()] || "Early Bird (15%)"
+}
     <br />
     
     <strong>Price to Pay:</strong> Rs. {getPrice() ? getPrice() : "Select options below"}
