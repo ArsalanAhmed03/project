@@ -21,7 +21,7 @@ const competitionsData = [
   { label: "Drone Competition", value: "Drone Competition", actualPrice: 3000, earlyBird: 2550, maxMembers: 3 },
   { label: "E-Gaming", value: "E-Gaming", actualPrice: 1500, earlyBird: 1275, maxMembers: 1, games: { fifa: 1500, tekken: 1500 } },
   { label: "Project Exhibition", value: "Project Exhibition", actualPrice: 3000, earlyBird: 2550, maxMembers: 3 },
-  { label: "Cybersecurity Workshop+Competition", value: "Cybersecurity Workshop+Competition", actualPrice: 1500, earlyBird: 1275, maxMembers: 1 },
+  { label: "Cybersecurity Workshop+Competition", value  : "Cybersecurity Workshop+Competition", actualPrice: 1500, earlyBird: 1275, maxMembers: 1 },
 ];
 
 
@@ -237,6 +237,9 @@ const RegistrationForm = () => {
     if (formData.discountCode.trim().toUpperCase() === "FASTNU25") {
       return Math.round(actualPrice * 0.75);
     }
+    if (formData.discountCode.trim().toUpperCase() === "ITU20") {
+      return Math.round(actualPrice * 0.80);
+    }
     return earlyBird;
   };
 
@@ -398,7 +401,7 @@ const RegistrationForm = () => {
     {
   {
     PUCIT30: "PUCIT30 (30%)",
-    ACMNU30: "ACMNU30 (30%)",
+    ACMNU30: (formData.competition === "100 Minutes Programming" || formData.competition === "Cybersecurity Workshop+Competition") ? "ACMNU30 (30%)" : "Early Bird (15%)",
     LGU20: "LGU20 (20%)",
     CUI20: "CUI20 (20%)",
     ITU20: "ITU20 (20%)",
