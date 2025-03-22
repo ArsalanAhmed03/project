@@ -13,27 +13,28 @@ import RS from "../assets/ICONS/RS.png";
 
 // Competitions data with actual and early bird prices.
 const competitionsData = [
-  { label: "Speed Wiring", value: "speed_wiring", actualPrice: 1500, earlyBird: 1275, maxMembers: 3 },
-  { label: "100 Minutes Programming", value: "programming", actualPrice: 1800, earlyBird: 1530, maxMembers: 3 },
-  { label: "Battle Bots", value: "battle_bots", actualPrice: 5000, earlyBird: 4250, maxMembers: 3, categories: { heavy: { actualPrice: 5000, earlyBird: 4250 }, light: { actualPrice: 3000, earlyBird: 2550 } } },
-  { label: "Line Following Robot", value: "line_following", actualPrice: 2000, earlyBird: 1700, maxMembers: 3 },
-  { label: "Robo Soccer", value: "robo_soccer", actualPrice: 2000, earlyBird: 1700, maxMembers: 3 },
-  { label: "Drone Competition", value: "drone_competition", actualPrice: 3000, earlyBird: 2550, maxMembers: 3 },
-  { label: "E-Gaming", value: "e_gaming", actualPrice: 1500, earlyBird: 1275, maxMembers: 1, games: { fifa: 1500, tekken: 1500 } },
-  { label: "Project Exhibition", value: "project_exhibition", actualPrice: 3000, earlyBird: 2550, maxMembers: 3 },
-  { label: "Cybersecurity Workshop+Competition", value: "cybersecurity", actualPrice: 1500, earlyBird: 1275, maxMembers: 1 },
+  { label: "Speed Wiring", value: "Speed Wiring", actualPrice: 1500, earlyBird: 1275, maxMembers: 3 },
+  { label: "100 Minutes Programming", value: "100 Minutes Programming", actualPrice: 1800, earlyBird: 1530, maxMembers: 3 },
+  { label: "Battle Bots", value: "Battle Bots", actualPrice: 5000, earlyBird: 4250, maxMembers: 3, categories: { heavy: { actualPrice: 5000, earlyBird: 4250 }, light: { actualPrice: 3000, earlyBird: 2550 } } },
+  { label: "Line Following Robot", value: "Line Following Robot", actualPrice: 2000, earlyBird: 1700, maxMembers: 3 },
+  { label: "Robo Soccer", value: "Robo Soccer", actualPrice: 2000, earlyBird: 1700, maxMembers: 3 },
+  { label: "Drone Competition", value: "Drone Competition", actualPrice: 3000, earlyBird: 2550, maxMembers: 3 },
+  { label: "E-Gaming", value: "E-Gaming", actualPrice: 1500, earlyBird: 1275, maxMembers: 1, games: { fifa: 1500, tekken: 1500 } },
+  { label: "Project Exhibition", value: "Project Exhibition", actualPrice: 3000, earlyBird: 2550, maxMembers: 3 },
+  { label: "Cybersecurity Workshop+Competition", value: "Cybersecurity Workshop+Competition", actualPrice: 1500, earlyBird: 1275, maxMembers: 1 },
 ];
 
+
 const competitionLogos = {
-  speed_wiring: SW,
-  programming: MP,
-  battle_bots: BB,
-  line_following: LFR,
-  robo_soccer: RS,
-  drone_competition: DC,
-  e_gaming: GC,
-  project_exhibition: PE,
-  cybersecurity: CW,
+  "Speed Wiring": SW,
+  "100 Minutes Programming": MP,
+  "Battle Bots": BB,
+  "Line Following Robot": LFR,
+  "Robo Soccer": RS,
+  "Drone Competition": DC,
+  "E-Gaming": GC,
+  "Project Exhibition": PE,
+  "Cybersecurity Workshop+Competition": CW,
 };
 
 // Initialize Cloudinary instance.
@@ -62,7 +63,7 @@ const RegistrationForm = () => {
   // Updated payment state: removed amount and teamName.
   const [formData, setFormData] = useState({
     email: "",
-    competition: "speed_wiring",
+    competition: "Speed Wiring",
     competitionCategory: "",
     competitionGame: "",
     teamName: "", // Team Name remains in Step 2 (for the team registration details)
@@ -104,15 +105,15 @@ const RegistrationForm = () => {
         alert("Team Name and Institute are required.");
         return false;
       }
-      if (formData.competition === "battle_bots" && !formData.competitionCategory) {
+      if (formData.competition === "Battle Bots" && !formData.competitionCategory) {
         alert("Please select a category for Battle Bots.");
         return false;
       }
-      if (formData.competition === "drone_competition" && !formData.competitionCategory) {
+      if (formData.competition === "Drone Competition" && !formData.competitionCategory) {
         alert("Please select a category for Drone Competition.");
         return false;
       }
-      if (formData.competition === "e_gaming" && !formData.competitionGame) {
+      if (formData.competition === "E-Gaming" && !formData.competitionGame) {
         alert("Please select a game for E-Gaming.");
         return false;
       }
@@ -195,7 +196,7 @@ const RegistrationForm = () => {
     let earlyBird = currentCompetition.earlyBird;
 
     // Check if Battle Bots and category selected
-    if (formData.competition === "battle_bots" && formData.competitionCategory) {
+    if (formData.competition === "Battle Bots" && formData.competitionCategory) {
       const category = currentCompetition.categories[formData.competitionCategory];
       if (category) {
         actualPrice = category.actualPrice;
@@ -206,7 +207,7 @@ const RegistrationForm = () => {
     if (formData.discountCode.trim().toUpperCase() === "PUCIT30") {
       return Math.round(actualPrice * 0.7);
     }
-    if ((formData.competition === "programming" || formData.competition === "cybersecurity") && formData.discountCode.trim().toUpperCase() === "ACMNU30") {
+    if ((formData.competition === "100 Minutes Programming" || formData.competition === "Cybersecurity Workshop+Competition") && formData.discountCode.trim().toUpperCase() === "ACMNU30") {
       return Math.round(actualPrice * 0.7);
     }
     if (formData.discountCode.trim().toUpperCase() === "LGU20") {
@@ -342,25 +343,25 @@ const RegistrationForm = () => {
             <div className="mb-4">
               <label className="block font-medium mb-1">Competition</label>
               <select
-                value={formData.competition}
-                onChange={(e) => {
-                  updateCompetitionDetail("competition", e.target.value);
-                  setFormData((prev) => ({
-                    ...prev,
-                    competitionCategory: "",
-                    competitionGame: "",
-                    participants: [{ name: "", cnic: "", gender: "", phn: "", email: "" }],
-                  }));
-                }}
-                className="w-full border px-3 py-2 rounded"
-                required
-              >
-                {competitionsData.map((comp) => (
-                  <option key={comp.value} value={comp.value}>
-                    {comp.label}
-                  </option>
-                ))}
-              </select>
+  value={formData.competition}
+  onChange={(e) => {
+    updateCompetitionDetail("competition", e.target.value);
+    setFormData((prev) => ({
+      ...prev,
+      competitionCategory: "",
+      competitionGame: "",
+      participants: [{ name: "", cnic: "", gender: "", phn: "", email: "" }],
+    }));
+  }}
+  className="w-full border px-3 py-2 rounded"
+  required
+>
+  {competitionsData.map((comp) => (
+    <option key={comp.value} value={comp.value}>
+      {comp.label}
+    </option>
+  ))}
+</select>
             </div>
             <div className="flex justify-end">
               <button type="button" onClick={() => { if (validateStep()) setStep(2); }} className="bg-blue-500 text-white px-4 py-2 rounded">
@@ -388,7 +389,7 @@ const RegistrationForm = () => {
   </div>
   <div>
     <strong>Actual Price:</strong> Rs.{" "}
-    {formData.competition === "battle_bots" && formData.competitionCategory
+    {formData.competition === "Battle Bots" && formData.competitionCategory
       ? currentCompetition.categories[formData.competitionCategory].actualPrice
       : currentCompetition.actualPrice}{" "}
     <br />
@@ -414,7 +415,7 @@ const RegistrationForm = () => {
     <strong>Price to Pay:</strong> Rs. {getPrice() ? getPrice() : "Select options below"}
   </div>
 </div>
-            {formData.competition === "battle_bots" && (
+            {formData.competition === "Battle Bots" && (
               <div className="mb-4">
                 <label className="block font-medium mb-1">Choose Category</label>
                 <select value={formData.competitionCategory} onChange={(e) => updateCompetitionDetail("competitionCategory", e.target.value)} className="w-full border px-3 py-2 rounded" required>
@@ -424,7 +425,7 @@ const RegistrationForm = () => {
                 </select>
               </div>
             )}
-            {formData.competition === "drone_competition" && (
+            {formData.competition === "Drone Competition" && (
               <div className="mb-4">
                 <label className="block font-medium mb-1">Choose Category</label>
                 <select value={formData.competitionCategory} onChange={(e) => updateCompetitionDetail("competitionCategory", e.target.value)} className="w-full border px-3 py-2 rounded" required>
@@ -434,7 +435,7 @@ const RegistrationForm = () => {
                 </select>
               </div>
             )}
-            {formData.competition === "e_gaming" && (
+            {formData.competition === "E_Gaming" && (
               <div className="mb-4">
                 <label className="block font-medium mb-1">Choose Game</label>
                 <select value={formData.competitionGame} onChange={(e) => updateCompetitionDetail("competitionGame", e.target.value)} className="w-full border px-3 py-2 rounded" required>
