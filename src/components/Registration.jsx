@@ -193,14 +193,14 @@ const RegistrationForm = () => {
   const getPrice = () => {
     if (!currentCompetition) return "";
     let actualPrice = currentCompetition.actualPrice;
-    let earlyBird = currentCompetition.earlyBird;
+    // let earlyBird = currentCompetition.earlyBird;
 
     // Check if Battle Bots and category selected
     if (formData.competition === "Battle Bots" && formData.competitionCategory) {
       const category = currentCompetition.categories[formData.competitionCategory];
       if (category) {
         actualPrice = category.actualPrice;
-        earlyBird = category.earlyBird;
+        // earlyBird = category.earlyBird;
       }
     }
 
@@ -240,7 +240,7 @@ const RegistrationForm = () => {
     if (formData.discountCode.trim().toUpperCase() === "ITU20") {
       return Math.round(actualPrice * 0.80);
     }
-    return earlyBird;
+    return actualPrice;
   };
 
   // File input handler for Proof of Payment.
@@ -401,7 +401,7 @@ const RegistrationForm = () => {
     {
   {
     PUCIT30: "PUCIT30 (30%)",
-    ACMNU30: (formData.competition === "100 Minutes Programming" || formData.competition === "Cybersecurity Workshop+Competition") ? "ACMNU30 (30%)" : "Early Bird (15%)",
+    ACMNU30: (formData.competition === "100 Minutes Programming" || formData.competition === "Cybersecurity Workshop+Competition") ? "ACMNU30 (30%)" : "No Code Applied",
     LGU20: "LGU20 (20%)",
     CUI20: "CUI20 (20%)",
     ITU20: "ITU20 (20%)",
@@ -411,7 +411,7 @@ const RegistrationForm = () => {
     ZAID25: "ZAID25 (25%)",
     ZAID30: "ZAID30 (30%)",
     FASTNU25: "FASTNU25 (25%)",
-  }[formData.discountCode.trim().toUpperCase()] || "Early Bird (15%)"
+  }[formData.discountCode.trim().toUpperCase()] || "No Code Applied"
 }
     <br />
     
@@ -438,7 +438,7 @@ const RegistrationForm = () => {
                 </select>
               </div>
             )}
-            {formData.competition === "E_Gaming" && (
+            {formData.competition === "E-Gaming" && (
               <div className="mb-4">
                 <label className="block font-medium mb-1">Choose Game</label>
                 <select value={formData.competitionGame} onChange={(e) => updateCompetitionDetail("competitionGame", e.target.value)} className="w-full border px-3 py-2 rounded" required>
@@ -540,9 +540,9 @@ const RegistrationForm = () => {
               <p><strong>Account Title:</strong> BCCI- FAST NUCES (LHE OPER)</p>
               <p><strong>Account Number:</strong> PK37FAYS0169007900161007</p>
               <hr className="my-2" />
-              <p className="text-sm">
+              {/* <p className="text-sm">
                 Registration Fees for Competitions with EARLY BIRD DISCOUNT OF 15% only for a LIMITED TIME.
-              </p>
+              </p> */}
               <p className="text-sm mt-2">For any queries contact: Zaid Shabbir - 03332122981</p>
               <p className="text-sm mt-2">
                 For Food and Accommodation contact: Zaid Shabbir - 03332122981, Anus Farooq - 03354309476
