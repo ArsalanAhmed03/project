@@ -240,6 +240,9 @@ const RegistrationForm = () => {
     if (formData.discountCode.trim().toUpperCase() === "ITU20") {
       return Math.round(actualPrice * 0.80);
     }
+    if (formData.discountCode.trim().toUpperCase() === "NERC20") {
+      return Math.round(actualPrice * 0.80);
+    }
     return actualPrice;
   };
 
@@ -411,6 +414,7 @@ const RegistrationForm = () => {
     ZAID25: "ZAID25 (25%)",
     ZAID30: "ZAID30 (30%)",
     FASTNU25: "FASTNU25 (25%)",
+    NERC20: "NERC20 (20%)",
   }[formData.discountCode.trim().toUpperCase()] || "No Code Applied"
 }
     <br />
