@@ -243,6 +243,9 @@ const RegistrationForm = () => {
     if (formData.discountCode.trim().toUpperCase() === "NERC20") {
       return Math.round(actualPrice * 0.80);
     }
+    if (formData.discountCode.trim().toUpperCase() === "EGAMING30" && formData.competition === "E-Gaming") {
+      return Math.round(actualPrice * 0.70);
+    }
     return actualPrice;
   };
 
@@ -405,6 +408,7 @@ const RegistrationForm = () => {
   {
     PUCIT30: "PUCIT30 (30%)",
     ACMNU30: (formData.competition === "100 Minutes Programming" || formData.competition === "Cybersecurity Workshop+Competition") ? "ACMNU30 (30%)" : "No Code Applied",
+    EGAMING30: (formData.competition === "E-Gaming") ? "EGAMING30 (30%)" : "No Code Applied",
     LGU20: "LGU20 (20%)",
     CUI20: "CUI20 (20%)",
     ITU20: "ITU20 (20%)",
