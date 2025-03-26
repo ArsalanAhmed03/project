@@ -3,26 +3,26 @@ import { Phone, User, Building2, Mail, Facebook, Instagram, Linkedin } from 'luc
 
 const contacts = [
   {
-    name: 'Ali Nasir',
-    position: 'General Secretary',
+    // name: 'Ali Nasir',
+    // position: 'General Secretary',
     // phone: '+92 332 4286968',
     // link: 'https://wa.me/923324286968',
   },
   {
-    name: 'Waleed Ahmed',
-    position: 'Marketing Coordinator',
+    // name: 'Waleed Ahmed',
+    // position: 'Marketing Coordinator',
     // phone: '+92 334 5619443',
     // link: 'https://wa.me/923345619443',
   },
   {
-    name: 'Zaid Shabbir',
-    position: 'Vice President',
+    // name: 'Zaid Shabbir',
+    // position: 'Vice President',
     // phone: '+92 333 2122981',
     // link: 'https://wa.me/923332122981',
   },
   {
-    name: 'Arsalan Ahmed',
-    position: 'Vice President',
+    // name: 'Arsalan Ahmed',
+    // position: 'Vice President',
     // phone: '+92 305 4640255',
     // link: 'https://wa.me/923054640255',
   },
@@ -36,7 +36,7 @@ function Contact() {
           <h1 className="text-4xl font-bold text-[#035B98] mb-4">Contact Us</h1>
           <p className="text-lg text-[#981A31]">Get in touch with our team members</p>
         </div>
-        <div className="grid gap-6 md:grid-cols-2 mb-12">
+        {false && <div className="grid gap-6 md:grid-cols-2 mb-12">
           {contacts.map((contact, index) => (
             <a
               key={index}
@@ -53,14 +53,14 @@ function Contact() {
                 <div className="space-y-2">
                   <p className="text-[#981A31]">{contact.position}</p>
                   <div className="flex items-center text-gray-700">
-                    {/* <Phone className="w-5 h-5 text-blue-600 mr-2" /> */}
-                    {/* <span>{contact.phone}</span> */}
+                    <Phone className="w-5 h-5 text-blue-600 mr-2" />
+                    <span>{contact.phone}</span>
                   </div>
                 </div>
               </div>
             </a>
           ))}
-        </div>
+        </div>}
         <div className="bg-white rounded-lg shadow-lg p-8 mt-8">
           <div className="flex items-center justify-center mb-6">
             <Building2 className="w-8 h-8 text-blue-600 mr-3" />
