@@ -61,14 +61,14 @@ const Navbar = () => {
               )
             )}
             {/* REGISTER button navigates to the registration form route */}
-            <RouterLink to="/register">
+            {/* <RouterLink to="/register">
               <button className="relative overflow-hidden border-2 border-[#035B98] text-[#035B98] bg-transparent px-4 py-2 rounded-full font-bold group">
                 <span className="absolute left-0 top-0 h-full w-0 bg-[#035B98] transition-all duration-500 ease-out group-hover:w-full"></span>
                 <span className="relative z-10 group-hover:text-white transition-colors duration-500">
                   REGISTER
                 </span>
               </button>
-            </RouterLink>
+            </RouterLink> */}
             {/* <a 
               href="https://docs.google.com/forms/d/19hqPzhZmVpff3BePzhCLa4OK2xp6UJFqCpuXen__T48/edit?ts=67d8ba68" 
               target="_blank" 
@@ -135,7 +135,7 @@ const Navbar = () => {
               )
             )}
             {/* Mobile REGISTER button using RouterLink */}
-            <RouterLink to="/register">
+            {/* <RouterLink to="/register">
               <button 
                 onClick={() => setIsOpen(false)}
                 className="relative overflow-hidden w-full bg-[#035B98] text-white px-4 py-2 rounded-md group mt-2"
@@ -145,7 +145,7 @@ const Navbar = () => {
                   REGISTER
                 </span>
               </button>
-            </RouterLink>
+            </RouterLink> */}
             {/* <a 
               href="https://docs.google.com/forms/d/19hqPzhZmVpff3BePzhCLa4OK2xp6UJFqCpuXen__T48/edit?ts=67d8ba68" 
               target="_blank" 

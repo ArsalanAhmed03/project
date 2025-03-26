@@ -5,26 +5,26 @@ const contacts = [
   {
     name: 'Ali Nasir',
     position: 'General Secretary',
-    phone: '+92 332 4286968',
-    link: 'https://wa.me/923324286968',
+    // phone: '+92 332 4286968',
+    // link: 'https://wa.me/923324286968',
   },
   {
     name: 'Waleed Ahmed',
     position: 'Marketing Coordinator',
-    phone: '+92 334 5619443',
-    link: 'https://wa.me/923345619443',
+    // phone: '+92 334 5619443',
+    // link: 'https://wa.me/923345619443',
   },
   {
     name: 'Zaid Shabbir',
     position: 'Vice President',
-    phone: '+92 333 2122981',
-    link: 'https://wa.me/923332122981',
+    // phone: '+92 333 2122981',
+    // link: 'https://wa.me/923332122981',
   },
   {
     name: 'Arsalan Ahmed',
     position: 'Vice President',
-    phone: '+92 305 4640255',
-    link: 'https://wa.me/923054640255',
+    // phone: '+92 305 4640255',
+    // link: 'https://wa.me/923054640255',
   },
 ];
 
@@ -53,8 +53,8 @@ function Contact() {
                 <div className="space-y-2">
                   <p className="text-[#981A31]">{contact.position}</p>
                   <div className="flex items-center text-gray-700">
-                    <Phone className="w-5 h-5 text-blue-600 mr-2" />
-                    <span>{contact.phone}</span>
+                    {/* <Phone className="w-5 h-5 text-blue-600 mr-2" /> */}
+                    {/* <span>{contact.phone}</span> */}
                   </div>
                 </div>
               </div>
