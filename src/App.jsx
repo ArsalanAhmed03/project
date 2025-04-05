@@ -7,14 +7,31 @@ import RegistrationForm from './components/Registration';
 import Contact from './components/Contact';
 import AboutUs from './components/AboutUs';
 import Countdown from './components/CountDown';
+import Postponed from './components/PostPoned';
+
 // import Register from './components/Register';
 
 // Define a homepage component that bundles your main sections.
-function HomePage({ targetDate }) {
+// function HomePage({ targetDate }) {
+//   return (
+//     <>
+//       <Hero />
+//       <Postponed />
+//       {/* <Countdown targetDate={targetDate} /> */}
+//       <Competitions />
+//       {/* <Register /> */}
+//       <AboutUs />
+//       <Contact />
+//     </>
+//   );
+// }
+
+function HomePage() {
   return (
     <>
       <Hero />
-      <Countdown targetDate={targetDate} />
+      <Postponed />
+      {/* <Countdown targetDate={targetDate} /> */}
       <Competitions />
       {/* <Register /> */}
       <AboutUs />
@@ -30,7 +47,8 @@ function App() {
       <Navbar />
       <Routes>
         {/* Home page route */}
-        <Route path="/" element={<HomePage targetDate={targetDate} />} />
+        {/* <Route path="/" element={<HomePage targetDate={targetDate} />} /> */}
+        <Route path="/" element={<HomePage />} />
         {/* Registration page route */}
         {/* <Route path="/register" element={<RegistrationForm />} /> */}
       </Routes>
